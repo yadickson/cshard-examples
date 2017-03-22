@@ -22,6 +22,7 @@ namespace IntegracionWD.Core
                 ValidadorNombre.Validar(data.Nombre);
                 ValidadorApellido.Validar(data.Apellido);
                 ValidadorRUT.Validar(data.RUT);
+                ValidadorTarjeta.Validar(data.Tarjeta);
 
                 return null;
             }

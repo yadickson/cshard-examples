@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using IntegracionWD.Exception;
 using IntegracionWD.Constants;
 
@@ -57,6 +58,22 @@ namespace IntegracionWD.Util
             else
             {
                 char[] letras = patente.Substring(0, 4).ToCharArray();
+                string numeroFinal = patente.Substring(4, 2);
+
+                Regex rx = new Regex("\\d+");
+                Match m = rx.Match(numeroFinal);
+
+                if (!m.Success)
+                {
+                    throw new BusinessException("Patente no valida", Errors.PATENTE_INCORRECTA);
+                }
+
+                int nFinal = int.Parse(numeroFinal);
+
+                if (nFinal < 10)
+                {
+                    throw new BusinessException("Patente no valida", Errors.PATENTE_INCORRECTA);
+                }
 
                 foreach (char c in letras)
                 {
@@ -68,10 +85,19 @@ namespace IntegracionWD.Util
                         throw new BusinessException("Patente no valida", Errors.PATENTE_INCORRECTA);
                     }
 
+                    if (pos == 9)
+                    {
+                        pos = -1;
+                    }
+                    if (pos >= 10)
+                    {
+                        pos -= 9;
+                    }
+
                     numero += (pos + 1).ToString();
                 }
 
-                numero += patente.Substring(4, 2);
+                numero += numeroFinal;
 
             }
 

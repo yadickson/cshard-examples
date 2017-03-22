@@ -52,6 +52,20 @@ namespace IntegracionWD.UnitTest
         }
 
         [TestMethod]
+        [ExpectedException(typeof(BusinessException))]
+        public void TestValidarPatenteErrorNumeric1()
+        {
+            Validar("BCBZXX-3");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(BusinessException))]
+        public void TestValidarPatenteErrorNumeric2()
+        {
+            Validar("BCBZ09-3");
+        }
+
+        [TestMethod]
         public void TestValidarPatente1()
         {
             string result = Validar("AA8159-5");
@@ -78,10 +92,42 @@ namespace IntegracionWD.UnitTest
         [TestMethod]
         public void TestValidarPatente4()
         {
+            string result = Validar("BCBC10-9");
+            string expected = "BCBC10" + Messages.SEPARADOR_DV + "9";
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TestValidarPatente5()
+        {
+            string result = Validar("BCBP10-6");
+            string expected = "BCBP10" + Messages.SEPARADOR_DV + "6";
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TestValidarPatente6()
+        {
+            string result = Validar("BCBR10-9");
+            string expected = "BCBR10" + Messages.SEPARADOR_DV + "9";
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void TestValidarPatente7()
+        {
+            string result = Validar("BCBS10-5");
+            string expected = "BCBS10" + Messages.SEPARADOR_DV + "5";
+            Assert.AreEqual(expected, result);
+        } 
+
+        [TestMethod]
+        public void TestValidarPatente8()
+        {
             string result = Validar("BCBZ10-3");
             string expected = "BCBZ10" + Messages.SEPARADOR_DV + "3";
             Assert.AreEqual(expected, result);
         }
-
+        
     }
 }

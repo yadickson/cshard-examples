@@ -53,5 +53,17 @@ namespace IntegracionWD.UnitTest
             Assert.IsTrue(validador.Validar("123456", "0"));
         }
 
+        [TestMethod]
+        public void TestValidar_DV_Correcto2()
+        {
+            Assert.IsTrue(validador.Validar("121210", "9"));
+        }
+
+        [TestMethod]
+        public void TestValidar_DV_Correcto3()
+        {
+            Assert.IsTrue(validador.Validar("121310", "5"));
+        }
+
     }
 }
