@@ -8,18 +8,25 @@ using IntegracionWD.Core;
 
 namespace IntegracionWD.Service
 {
-    [WebService(Namespace = "http://integracion.wd.cl/")]
+    [WebService(Namespace = "http://integracion.wd.cl/", Description = "Web Service para obtener listado de transito")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     public class Transito : System.Web.Services.WebService
     {
         private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Transito));
 
-        [WebMethod]
+        private TransitoInterface transito = new TransitoImpl();
+
+        public void SetTransito(TransitoInterface transito)
+        {
+            this.transito = transito;
+        }
+
+        [WebMethod(Description = "Metodo para obtener listado de transito")]
         public RespuestaTransito ObtenerListadoTransito(DataTransito data)
         {
             log.Info("Obtener listado transito : " + data);
-            return null; // ResponseFactory.CreateSuccessResponse("listo");
+            return transito.ObtenerListadoTransito(data);
         }
     }
 }

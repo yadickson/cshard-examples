@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A34AAC63-FDF3-46F2-8FD7-8E42D515B8BE}</ProjectGuid>
+    <ProjectGuid>{5816B9BF-DEE1-4EEB-A920-3DA28A6894D8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IntegracionWD.Util</RootNamespace>
-    <AssemblyName>IntegracionWD.Util</AssemblyName>
+    <RootNamespace>IntegracionWD.Exception</RootNamespace>
+    <AssemblyName>IntegracionWD.Exception</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,9 +34,7 @@
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,26 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ValidadorModulo11.cs" />
-    <Compile Include="ValidadorApellido.cs" />
-    <Compile Include="ValidadorNombre.cs" />
-    <Compile Include="ValidadorPatente.cs" />
+    <Compile Include="BusinessException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValidadorRUT.cs" />
-    <Compile Include="ValidadorTarjeta.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Exception\Exception.csproj">
-      <Project>{5816b9bf-dee1-4eeb-a920-3da28a6894d8}</Project>
-      <Name>Exception</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Constants\Constants.csproj">
-      <Project>{ce4f5f74-a95b-4a5a-be42-072d969905bd}</Project>
-      <Name>Constants</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

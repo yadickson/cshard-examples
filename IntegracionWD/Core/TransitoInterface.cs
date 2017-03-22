@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IntegracionWD.Domain;
 
 namespace IntegracionWD.Core
 {
-    class Constants
+    public interface TransitoInterface
     {
-        public const string CodeSuccess = "ACEPTADO";
-        public const string CodeError = "RECHAZADO";
+        RespuestaTransito ObtenerListadoTransito(DataTransito data);
     }
 }

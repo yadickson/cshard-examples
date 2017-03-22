@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace IntegracionWD.Util
 {
-    class RUT
+    public class ValidadorTarjeta
     {
-        public static string Validar(string RUT)
+        public static string Validar(string input)
         {
             return "";
         }

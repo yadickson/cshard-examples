@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IntegracionWD.Domain;
+using IntegracionWD.Constants;
 
 namespace IntegracionWD.Core
 {
@@ -12,7 +13,7 @@ namespace IntegracionWD.Core
         public static Respuesta CreateSuccessResponse(string message)
         {
             Respuesta response = new Respuesta();
-            response.Codigo = Constants.CodeSuccess;
+            response.Codigo = Messages.CODIGO_ACEPTADO;
             response.Mensaje = message;
             return response;
         }
@@ -20,7 +21,7 @@ namespace IntegracionWD.Core
         public static Respuesta CreateErrorResponse(string message)
         {
             Respuesta response = new Respuesta();
-            response.Codigo = Constants.CodeError;
+            response.Codigo = Messages.CODIGO_ACEPTADO;
             response.Mensaje = message;
             return response;
         }
