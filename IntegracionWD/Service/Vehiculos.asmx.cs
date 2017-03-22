@@ -15,7 +15,7 @@ namespace IntegracionWD.Service
     {
         private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Vehiculos));
 
-        private VehiculoInterface vehiculo = new VehiculoImpl();
+        private VehiculoInterface vehiculo = AbstractFactoryMethod.createVehiculo();
 
         public void SetVehiculo(VehiculoInterface vehiculo)
         {

@@ -15,7 +15,7 @@ namespace IntegracionWD.Service
     {
         private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Personas));
         
-        private PersonaInterface persona = new PersonaImpl();
+        private PersonaInterface persona = AbstractFactoryMethod.createPersona();
 
         public void SetPersona(PersonaInterface persona)
         {

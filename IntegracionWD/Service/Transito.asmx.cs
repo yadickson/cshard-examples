@@ -15,7 +15,7 @@ namespace IntegracionWD.Service
     {
         private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Transito));
 
-        private TransitoInterface transito = new TransitoImpl();
+        private TransitoInterface transito = AbstractFactoryMethod.createTransito();
 
         public void SetTransito(TransitoInterface transito)
         {

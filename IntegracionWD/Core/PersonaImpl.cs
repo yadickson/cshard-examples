@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using IntegracionWD.Domain;
 using IntegracionWD.Util;
 using IntegracionWD.Exception;
+using IntegracionWD.Constants;
+using IntegracionWD.DataBase;
 
 namespace IntegracionWD.Core
 {
@@ -13,23 +15,30 @@ namespace IntegracionWD.Core
     {
         private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(PersonaImpl));
 
+        private PersonaDaoInterface personaDao = new PersonaDaoImpl();
+
+        public PersonaImpl(PersonaDaoInterface personaDao)
+        {
+            this.personaDao = personaDao;
+        }
+
         public Respuesta AgregarPersona(DataPersona data)
         {
             log.Info("Agregar persona : " + data);
 
             try 
             {
-                ValidadorNombre.Validar(data.Nombre);
-                ValidadorApellido.Validar(data.Apellido);
-                ValidadorRUT.Validar(data.RUT);
-                ValidadorTarjeta.Validar(data.Tarjeta);
+                data.Nombre = ValidadorNombre.Validar(data.Nombre);
+                data.Apellido = ValidadorApellido.Validar(data.Apellido);
+                data.RUT = ValidadorRUT.Validar(data.RUT);
+                data.Tarjeta = ValidadorTarjeta.Validar(data.Tarjeta);
 
-                return null;
+                return personaDao.AgregarPersona(data);
             }
             catch (BusinessException ex)
             {
                 log.Error("Error al agregar persona", ex);
-                return ResponseFactory.CreateErrorResponse(ex.Message);
+                return ResponseFactory.CreateErrorResponse(Business.SERVICIO_PERSONAS + ex.Code);
             }
         }
     }
