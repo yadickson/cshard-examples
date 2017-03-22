@@ -7,8 +7,8 @@
     <ProjectGuid>{639A879E-B573-4FFF-B713-15A8319B7D7F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataBase</RootNamespace>
-    <AssemblyName>DataBase</AssemblyName>
+    <RootNamespace>IntegracionWD.DataBase</RootNamespace>
+    <AssemblyName>IntegracionWD.DataBase</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

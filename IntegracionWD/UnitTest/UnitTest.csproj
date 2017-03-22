@@ -58,21 +58,21 @@
       <Project>{1b6c9fb6-5934-4389-84ea-477118896d58}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Models\Models.csproj">
+    <ProjectReference Include="..\Model\Model.csproj">
       <Project>{9df95b03-80e6-499c-9a23-74a78a64bf8f}</Project>
-      <Name>Models</Name>
+      <Name>Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataBase\DataBase.csproj">
       <Project>{639a879e-b573-4fff-b713-15a8319b7d7f}</Project>
       <Name>DataBase</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IntegracionWD\IntegracionWD.csproj">
+    <ProjectReference Include="..\Service\Service.csproj">
       <Project>{fd3b10fe-d1c1-4c97-ada5-143ca954be42}</Project>
-      <Name>IntegracionWD</Name>
+      <Name>Service</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Utils\Utils.csproj">
+    <ProjectReference Include="..\Util\Util.csproj">
       <Project>{a34aac63-fdf3-46f2-8fd7-8e42d515b8be}</Project>
-      <Name>Utils</Name>
+      <Name>Util</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
