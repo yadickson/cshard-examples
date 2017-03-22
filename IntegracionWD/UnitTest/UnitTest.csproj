@@ -51,6 +51,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ValidadorModulo11Test.cs" />
+    <Compile Include="ValidadorPatenteTest.cs" />
     <Compile Include="ValidadorRUTTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

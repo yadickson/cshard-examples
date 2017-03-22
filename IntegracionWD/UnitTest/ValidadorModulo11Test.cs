@@ -34,6 +34,14 @@ namespace IntegracionWD.UnitTest
         }
 
         [TestMethod]
+        public void TestObtenerDV4()
+        {
+            string result = validador.GetDigitoVerificador("18159");
+            string expected = "5";
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
         public void TestValidar_DV_Incorrecto()
         {
             Assert.IsFalse(validador.Validar("123456", "K"));

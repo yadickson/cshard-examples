@@ -8,8 +8,11 @@ using IntegracionWD.Constants;
 
 namespace IntegracionWD.Util
 {
-    public class Patente
+    public class ValidadorPatente
     {
+        private static List<string> listAntigua = new List<string>(Data.PATENTE_ANTIGUA);
+        private static List<string> listActual = new List<string>(Data.PATENTE_ACTUAL);
+
         public static string Validar(string input)
         {
             string ipatente = input;
@@ -33,10 +36,46 @@ namespace IntegracionWD.Util
                 throw new BusinessException("Patente con longitud incorrecta", Errors.PATENTE_LONGITUD_INCORRECTA);
             }
 
-            string patente = ipatente.Substring(0, ipatente.Length - 1);
+            string patente = ipatente.Substring(0, ipatente.Length - 1).ToUpper();
             string dv = ipatente.Substring(ipatente.Length - 1);
+            string numero = string.Empty;
 
-            if (!new ValidadorModulo11().Validar(patente, dv))
+            int aux;
+            bool esPatenteAntigua = int.TryParse(patente.Substring(2, 2), out aux);
+
+            if (esPatenteAntigua)
+            {
+                int pos = listAntigua.IndexOf(patente.Substring(0, 2).ToUpper());
+                
+                if (pos == -1)
+                {
+                    throw new BusinessException("Patente no valida", Errors.PATENTE_INCORRECTA);
+                }
+
+                numero = (pos + 1).ToString() + patente.Substring(2, 4);
+            }
+            else
+            {
+                char[] letras = patente.Substring(0, 4).ToCharArray();
+
+                foreach (char c in letras)
+                {
+                    string caracter = c.ToString().ToUpper();
+                    int pos = listActual.IndexOf(caracter);
+
+                    if (pos == -1)
+                    {
+                        throw new BusinessException("Patente no valida", Errors.PATENTE_INCORRECTA);
+                    }
+
+                    numero += (pos + 1).ToString();
+                }
+
+                numero += patente.Substring(4, 2);
+
+            }
+
+            if (!new ValidadorModulo11().Validar(numero, dv))
             {
                 throw new BusinessException("Digito verificador de patente incorrecto", Errors.PATENTE_DV_INCORRECTO);
             }
