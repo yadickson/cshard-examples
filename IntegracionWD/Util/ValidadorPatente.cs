@@ -9,96 +9,33 @@ using IntegracionWD.Constants;
 
 namespace IntegracionWD.Util
 {
-    public class ValidadorPatente
+    public class ValidadorPatente : ValidadorBase
     {
-        private static List<string> listAntigua = new List<string>(Data.PATENTE_ANTIGUA);
-        private static List<string> listActual = new List<string>(Data.PATENTE_ACTUAL);
+        private List<string> listAntigua = new List<string>(Data.PATENTE_ANTIGUA);
+        private List<string> listActual = new List<string>(Data.PATENTE_ACTUAL);
 
-        public static string Validar(string input)
+        public string Validar(string input)
         {
-            string ipatente = input;
+            string ipatente;
 
-            if (ipatente == null)
-            {
-                throw new BusinessException("Patente nula", Errors.PATENTE_NULL);
-            }
-
-            ipatente = input.Trim();
-
-            if (ipatente.Length == 0)
-            {
-                throw new BusinessException("Patente vacia", Errors.PATENTE_VACIO);
-            }
-
-            ipatente = ipatente.Replace("-", "");
-
-            if (ipatente.Length != 7)
-            {
-                throw new BusinessException("Patente con longitud incorrecta", Errors.PATENTE_LONGITUD_INCORRECTA);
-            }
+            ValidarNulo(input, "Patente nula", Errors.PATENTE_NULL);
+            ValidarVacio(input, out ipatente, "Patente vacia", Errors.PATENTE_VACIO);
+            ValidarLongitud(ipatente, out ipatente);
 
             string patente = ipatente.Substring(0, ipatente.Length - 1).ToUpper();
             string dv = ipatente.Substring(ipatente.Length - 1);
-            string numero = string.Empty;
+            string numero;
 
             int aux;
             bool esPatenteAntigua = int.TryParse(patente.Substring(2, 2), out aux);
 
             if (esPatenteAntigua)
             {
-                int pos = listAntigua.IndexOf(patente.Substring(0, 2).ToUpper());
-                
-                if (pos == -1)
-                {
-                    throw new BusinessException("Patente no valida", Errors.PATENTE_INCORRECTA);
-                }
-
-                numero = (pos + 1).ToString() + patente.Substring(2, 4);
+                ValidarPatenteAntigua(patente, out numero);
             }
             else
             {
-                char[] letras = patente.Substring(0, 4).ToCharArray();
-                string numeroFinal = patente.Substring(4, 2);
-
-                Regex rx = new Regex("\\d+");
-                Match m = rx.Match(numeroFinal);
-
-                if (!m.Success)
-                {
-                    throw new BusinessException("Patente no valida", Errors.PATENTE_INCORRECTA);
-                }
-
-                int nFinal = int.Parse(numeroFinal);
-
-                if (nFinal < 10)
-                {
-                    throw new BusinessException("Patente no valida", Errors.PATENTE_INCORRECTA);
-                }
-
-                foreach (char c in letras)
-                {
-                    string caracter = c.ToString().ToUpper();
-                    int pos = listActual.IndexOf(caracter);
-
-                    if (pos == -1)
-                    {
-                        throw new BusinessException("Patente no valida", Errors.PATENTE_INCORRECTA);
-                    }
-
-                    if (pos == 9)
-                    {
-                        pos = -1;
-                    }
-                    if (pos >= 10)
-                    {
-                        pos -= 9;
-                    }
-
-                    numero += (pos + 1).ToString();
-                }
-
-                numero += numeroFinal;
-
+                ValidarPatenteActual(patente, out numero);
             }
 
             if (!new ValidadorModulo11().Validar(numero, dv))
@@ -107,6 +44,76 @@ namespace IntegracionWD.Util
             }
 
             return patente + Messages.SEPARADOR_DV + dv.ToUpper();
+        }
+
+        protected void ValidarLongitud(string input, out string output)
+        {
+            output = input.Replace("-", "");
+
+            if (output.Length != 7)
+            {
+                throw new BusinessException("Patente con longitud incorrecta", Errors.PATENTE_LONGITUD_INCORRECTA);
+            }
+
+        }
+
+        protected void ValidarPatenteAntigua(string input, out string output)
+        {
+            int pos = listAntigua.IndexOf(input.Substring(0, 2).ToUpper());
+
+            if (pos == -1)
+            {
+                throw new BusinessException("Patente no valida", Errors.PATENTE_INCORRECTA);
+            }
+
+            output = (pos + 1).ToString() + input.Substring(2, 4);
+
+        }
+
+        protected void ValidarPatenteActual(string input, out string output)
+        {
+            output = string.Empty;
+            char[] letras = input.Substring(0, 4).ToCharArray();
+            string numeroFinal = input.Substring(4, 2);
+
+            Regex rx = new Regex("\\d+");
+            Match m = rx.Match(numeroFinal);
+
+            if (!m.Success)
+            {
+                throw new BusinessException("Patente no valida", Errors.PATENTE_INCORRECTA);
+            }
+
+            int nFinal = int.Parse(numeroFinal);
+
+            if (nFinal < 10)
+            {
+                throw new BusinessException("Patente no valida", Errors.PATENTE_INCORRECTA);
+            }
+
+            foreach (char c in letras)
+            {
+                string caracter = c.ToString().ToUpper();
+                int pos = listActual.IndexOf(caracter);
+
+                if (pos == -1)
+                {
+                    throw new BusinessException("Patente no valida", Errors.PATENTE_INCORRECTA);
+                }
+
+                if (pos == 9)
+                {
+                    pos = -1;
+                }
+                if (pos >= 10)
+                {
+                    pos -= 9;
+                }
+
+                output += (pos + 1).ToString();
+            }
+
+            output += numeroFinal;
         }
     }
 }

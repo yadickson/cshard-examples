@@ -8,13 +8,13 @@ using IntegracionWD.Constants;
 
 namespace IntegracionWD.Util
 {
-    public class ValidadorNombre : ValidadorBase
+    public class ValidadorRazonSocial : ValidadorBase
     {
         public string Validar(string input)
         {
             string output;
-            ValidarNulo(input, "Nombre nulo", Errors.NOMBRE_NULL);
-            ValidarVacio(input, out output, "Nombre vacio", Errors.NOMBRE_VACIO);
+            ValidarNulo(input, "Razon social nulo", Errors.RAZON_SOCIAL_NULL);
+            ValidarVacio(input, out output, "Razon social vacio", Errors.RAZON_SOCIAL_VACIO);
             return output;
         }
     }

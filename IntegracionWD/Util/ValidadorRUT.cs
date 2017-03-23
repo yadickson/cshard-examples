@@ -8,31 +8,15 @@ using IntegracionWD.Constants;
 
 namespace IntegracionWD.Util
 {
-    public class ValidadorRUT
+    public class ValidadorRUT : ValidadorBase
     {
-        public static string Validar(string input)
+        public string Validar(string input)
         {
-            string irut = input;
+            string irut;
 
-            if (irut == null)
-            {
-                throw new BusinessException("RUT nulo", Errors.RUT_NULL);
-            }
-
-            irut = input.Trim();
-
-            if (irut.Length == 0)
-            {
-                throw new BusinessException("RUT vacio", Errors.RUT_VACIO);
-            }
-
-            irut = irut.Replace(".", "");
-            irut = irut.Replace("-", "");
-
-            if (irut.Length <= 1)
-            {
-                throw new BusinessException("RUT sin digito verificador", Errors.RUT_SIN_DV);
-            }
+            ValidarNulo(input, "RUT nulo", Errors.RUT_NULL);
+            ValidarVacio(input, out irut, "RUT vacio", Errors.RUT_VACIO);
+            ValidarLongitud(irut, out irut);
 
             string rut = irut.Substring(0, irut.Length - 1);
             string dv = irut.Substring(irut.Length - 1);
@@ -43,6 +27,17 @@ namespace IntegracionWD.Util
             }
 
             return rut + Messages.SEPARADOR_DV + dv.ToUpper();
+        }
+
+        protected void ValidarLongitud(string input, out string output)
+        {
+            output = input.Replace(".", "");
+            output = output.Replace("-", "");
+
+            if (output.Length <= 1)
+            {
+                throw new BusinessException("RUT sin digito verificador", Errors.RUT_SIN_DV);
+            }
         }
     }
 }

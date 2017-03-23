@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IntegracionWD.Exception;
+using IntegracionWD.Constants;
 
 namespace IntegracionWD.Util
 {
-    public class ValidadorTarjeta
+    public class ValidadorTarjeta: ValidadorBase
     {
-        public static string Validar(string input)
+        public string Validar(string input)
         {
-            return "";
+            string output;
+            ValidarNulo(input, "Tarjeta nula", Errors.TARJETA_NULL);
+            ValidarVacio(input, out output, "Tarjeta vacia", Errors.TARJETA_VACIO);
+            return output;
         }
     }
 }

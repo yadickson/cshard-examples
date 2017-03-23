@@ -28,10 +28,15 @@ namespace IntegracionWD.Core
 
             try 
             {
-                data.Nombre = ValidadorNombre.Validar(data.Nombre);
-                data.Apellido = ValidadorApellido.Validar(data.Apellido);
-                data.RUT = ValidadorRUT.Validar(data.RUT);
-                data.Tarjeta = ValidadorTarjeta.Validar(data.Tarjeta);
+                data.Nombre = new ValidadorNombre().Validar(data.Nombre);
+                data.Apellido = new ValidadorApellido().Validar(data.Apellido);
+                data.RUT = new ValidadorRUT().Validar(data.RUT);
+                data.Tarjeta = new ValidadorTarjeta().Validar(data.Tarjeta);
+                data.TipoPase = new ValidadorTipoPase().Validar(data.TipoPase);
+                data.Contrato = new ValidadorContrato().Validar(data.Contrato);
+                data.RazonSocial = new ValidadorRazonSocial().Validar(data.RazonSocial);
+                data.FechaExpiracionTrabajador = new ValidadorFechaExpiracionTrabajador().Validar(data.FechaExpiracionTrabajador);
+                data.FechaExpiracionLicencia = new ValidadorFechaExpiracionTrabajador().Validar(data.FechaExpiracionLicencia);
 
                 return personaDao.AgregarPersona(data);
             }

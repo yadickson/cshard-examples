@@ -8,25 +8,14 @@ using IntegracionWD.Constants;
 
 namespace IntegracionWD.Util
 {
-    public class ValidadorApellido
+    public class ValidadorApellido : ValidadorBase
     {
-        public static string Validar(string input)
+        public string Validar(string input)
         {
-            string apellido = input;
-
-            if (apellido == null)
-            {
-                throw new BusinessException("Apellido nulo", Errors.APELLIDO_NULL);
-            }
-
-            apellido = input.Trim();
-
-            if (apellido.Length == 0)
-            {
-                throw new BusinessException("Apellido vacio", Errors.APELLIDO_VACIO);
-            }
-
-            return apellido;
+            string output;
+            ValidarNulo(input, "Apellido nulo", Errors.APELLIDO_NULL);
+            ValidarVacio(input, out output, "Apellido vacio", Errors.APELLIDO_VACIO);
+            return output;
         }
     }
 }

@@ -44,6 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ValidadorFechaExpiracionLicencia.cs" />
+    <Compile Include="ValidadorFechaExpiracionTrabajador.cs" />
+    <Compile Include="ValidadorFecha.cs" />
+    <Compile Include="ValidadorBase.cs" />
+    <Compile Include="ValidadorContrato.cs" />
+    <Compile Include="ValidadorRazonSocial.cs" />
+    <Compile Include="ValidadorTipoPase.cs" />
     <Compile Include="ValidadorModulo11.cs" />
     <Compile Include="ValidadorApellido.cs" />
     <Compile Include="ValidadorNombre.cs" />
