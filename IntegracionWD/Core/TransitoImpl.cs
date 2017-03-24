@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IntegracionWD.Domain;
+using IntegracionWD.Util;
+using IntegracionWD.Exception;
+using IntegracionWD.Constants;
+using IntegracionWD.DataBase;
 
 namespace IntegracionWD.Core
 {
@@ -11,10 +15,50 @@ namespace IntegracionWD.Core
     {
         private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(TransitoImpl));
 
+        private TransitoDaoInterface transitoDao;
+
+        public TransitoImpl(TransitoDaoInterface transitoDao)
+        {
+            this.transitoDao = transitoDao;
+        }
+
         public RespuestaTransito ObtenerListadoTransito(DataTransito data)
         {
             log.Info("Obtener listado transito : " + data);
-            return null;
+
+            try
+            {
+                data.FechaDesde = new ValidadorFechaDesde().Validar(data.FechaDesde);
+                data.FechaHasta = new ValidadorFechaHasta().Validar(data.FechaHasta);
+
+                if (data.FechaDesde.CompareTo(data.FechaHasta) <= 0)
+                {
+                    data.FechaDesde = new ValidadorFechaDesde().Validar(data.FechaDesde);
+                    data.FechaHasta = new ValidadorFechaHasta().Validar(data.FechaHasta);
+                }
+                else
+                {
+                    throw new BusinessException("Fecha desde mayor a fecha hasta", Errors.FECHA_DESDE_MENOR);
+                }
+
+                if (data.Tipo != null && data.Identificador != null)
+                {
+                    string otipo;
+                    string odata;
+
+                    new ValidadorIdentificador().Validar(data.Tipo, data.Identificador, out otipo, out odata);
+
+                    data.Tipo = otipo;
+                    data.Identificador = odata;
+                }
+
+                return transitoDao.ObtenerListadoTransito(data);
+            }
+            catch (BusinessException ex)
+            {
+                log.Error("Error al consultar transito", ex);
+                return ResponseFactory.CreateErrorTransitResponse(Business.SERVICIO_TRANSITO + ex.Code);
+            }
         }
     }
 }

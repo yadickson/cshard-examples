@@ -16,22 +16,37 @@ namespace IntegracionWD.Core
 
         public static VehiculoInterface createVehiculo()
         {
-            return new VehiculoImpl();
+            return new VehiculoImpl(createVehiculoDao());
         }
 
         public static TransitoInterface createTransito()
         {
-            return new TransitoImpl();
+            return new TransitoImpl(createTransitoDao());
         }
 
         public static IdentificadorUnicoInterface createIdentificadorUnico()
         {
-            return new IdentificadorUnicoImpl();
+            return new IdentificadorUnicoImpl(createIdentificadorUnicoDao());
         }
 
         public static PersonaDaoInterface createPersonaDao()
         {
             return new PersonaDaoImpl();
+        }
+
+        public static VehiculoDaoInterface createVehiculoDao()
+        {
+            return new VehiculoDaoImpl();
+        }
+
+        public static IdentificadorUnicoDaoInterface createIdentificadorUnicoDao()
+        {
+            return new IdentificadorUnicoDaoImpl();
+        }
+
+        public static TransitoDaoInterface createTransitoDao()
+        {
+            return new TransitoDaoImpl();
         }
     }
 }

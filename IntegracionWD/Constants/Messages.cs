@@ -10,7 +10,11 @@ namespace IntegracionWD.Constants
     {
         public const string CODIGO_ACEPTADO = "ACEPTADO";
         public const string CODIGO_RECHAZADO = "RECHAZADO";
+        public const string CODIGO_ERROR_CONSULTA = "ERROR";
 
-        public const string SEPARADOR_DV = "-";
+        public const string CODIGO_TIPO_PERSONA = "P";
+        public const string CODIGO_TIPO_VEHICULO = "V";
+
+        public const string SEPARADOR_DV = "";
     }
 }

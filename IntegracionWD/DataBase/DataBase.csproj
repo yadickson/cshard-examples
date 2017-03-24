@@ -42,7 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TransitoDaoImpl.cs" />
+    <Compile Include="IdentificadorUnicoDaoImpl.cs" />
+    <Compile Include="VehiculoDaoImpl.cs" />
     <Compile Include="PersonaDaoImpl.cs" />
+    <Compile Include="TransitoDaoInterface.cs" />
+    <Compile Include="IdentificadorUnicoDaoInterface.cs" />
+    <Compile Include="VehiculoDaoInterface.cs" />
     <Compile Include="PersonaDaoInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using IntegracionWD.Domain;
 
-namespace IntegracionWD.Core
+namespace IntegracionWD.DataBase
 {
-    public interface IdentificadorUnicoInterface
+    public interface TransitoDaoInterface
     {
-        RespuestaIdentificador ObtenerIdentificadorUnico(DataIdentificador data);
+        RespuestaTransito ObtenerListadoTransito(DataTransito data);
     }
 }

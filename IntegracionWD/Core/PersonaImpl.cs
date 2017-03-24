@@ -15,7 +15,7 @@ namespace IntegracionWD.Core
     {
         private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(PersonaImpl));
 
-        private PersonaDaoInterface personaDao = new PersonaDaoImpl();
+        private PersonaDaoInterface personaDao;
 
         public PersonaImpl(PersonaDaoInterface personaDao)
         {
@@ -36,7 +36,9 @@ namespace IntegracionWD.Core
                 data.Contrato = new ValidadorContrato().Validar(data.Contrato);
                 data.RazonSocial = new ValidadorRazonSocial().Validar(data.RazonSocial);
                 data.FechaExpiracionTrabajador = new ValidadorFechaExpiracionTrabajador().Validar(data.FechaExpiracionTrabajador);
+                data.MotivoRechazoTrabajor = new ValidadorMotivoRechazoTrabajor().Validar(data.MotivoRechazoTrabajor);
                 data.FechaExpiracionLicencia = new ValidadorFechaExpiracionTrabajador().Validar(data.FechaExpiracionLicencia);
+                data.MotivoRechazoLicencia = new ValidadorMotivoRechazoLicencia().Validar(data.MotivoRechazoLicencia);
 
                 return personaDao.AgregarPersona(data);
             }

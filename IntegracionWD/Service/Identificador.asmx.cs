@@ -23,7 +23,7 @@ namespace IntegracionWD.Service
         }
 
         [WebMethod(Description = "Metodo para obtener identificador unico")]
-        public Respuesta ObtenerIdentificadorUnico(DataIdentificador data)
+        public RespuestaIdentificador ObtenerIdentificadorUnico(DataIdentificador data)
         {
             log.Info("Obtener identificador unico: " + data);
             return identificadorUnico.ObtenerIdentificadorUnico(data);

@@ -44,12 +44,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ValidadorAnio.cs" />
+    <Compile Include="ValidadorAnioVehiculo.cs" />
+    <Compile Include="ValidadorFechaHasta.cs" />
+    <Compile Include="ValidadorFechaDesde.cs" />
+    <Compile Include="ValidadorFechaExpiracionVehiculo.cs" />
+    <Compile Include="ValidadorIdentificador.cs" />
+    <Compile Include="ValidadorTipo.cs" />
+    <Compile Include="ValidadorModelo.cs" />
+    <Compile Include="ValidadorMotivoRechazoLicencia.cs" />
+    <Compile Include="ValidadorMotivoRechazoVehiculo.cs" />
+    <Compile Include="ValidadorMotivoRechazoTrabajor.cs" />
     <Compile Include="ValidadorFechaExpiracionLicencia.cs" />
     <Compile Include="ValidadorFechaExpiracionTrabajador.cs" />
     <Compile Include="ValidadorFecha.cs" />
     <Compile Include="ValidadorBase.cs" />
     <Compile Include="ValidadorContrato.cs" />
+    <Compile Include="ValidadorMarca.cs" />
     <Compile Include="ValidadorRazonSocial.cs" />
+    <Compile Include="ValidadorTipoVehiculo.cs" />
     <Compile Include="ValidadorTipoPase.cs" />
     <Compile Include="ValidadorModulo11.cs" />
     <Compile Include="ValidadorApellido.cs" />

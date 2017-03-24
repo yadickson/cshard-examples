@@ -44,6 +44,7 @@
     <Compile Include="DataVehiculo.cs" />
     <Compile Include="DataPersona.cs" />
     <Compile Include="ListadoTransito.cs" />
+    <Compile Include="RespuestaIdentificador.cs" />
     <Compile Include="RespuestaTransito.cs" />
     <Compile Include="Respuesta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

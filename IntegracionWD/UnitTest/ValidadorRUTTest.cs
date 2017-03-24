@@ -7,40 +7,42 @@ using IntegracionWD.Constants;
 namespace IntegracionWD.UnitTest
 {
     [TestClass]
-    public class ValidadorRUTTest : ValidadorRUT
+    public class ValidadorRUTTest
     {
+        private ValidadorRUT validador = new ValidadorRUT();
+
         [TestMethod]
         [ExpectedException(typeof(BusinessException))]
         public void TestInputNull()
         {
-            Validar(null);
+            validador.Validar(null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(BusinessException))]
         public void TestInputEmpty()
         {
-            Validar("");
+            validador.Validar("");
         }
 
         [TestMethod]
         [ExpectedException(typeof(BusinessException))]
         public void TestInputTrimEmpty()
         {
-            Validar("     ");
+            validador.Validar("     ");
         }
 
         [TestMethod]
         [ExpectedException(typeof(BusinessException))]
         public void TestValidarRUTError()
         {
-            Validar("123.456-1");
+            validador.Validar("123.456-1");
         }
 
         [TestMethod]
         public void TestValidarRUT()
         {
-            string result = Validar("123.456-0");
+            string result = validador.Validar("123.456-0");
             string expected = "123456" + Messages.SEPARADOR_DV + "0";
             Assert.AreEqual(expected, result);
         }

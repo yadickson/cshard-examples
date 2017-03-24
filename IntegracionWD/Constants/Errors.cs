@@ -36,10 +36,52 @@ namespace IntegracionWD.Constants
         public const string FECHA_EXPIRACION_LICENCIA_VACIO = "0072";
         public const string FECHA_EXPIRACION_LICENCIA_INCORRECTO = "0073";
 
-        public const string PATENTE_NULL = "0011";
-        public const string PATENTE_VACIO = "0012";
-        public const string PATENTE_LONGITUD_INCORRECTA = "0013";
-        public const string PATENTE_INCORRECTA = "0014";
-        public const string PATENTE_DV_INCORRECTO = "0015";
+        public const string MOTIVO_RECHAZO_TRABAJADOR_NULL = "0081";
+        public const string MOTIVO_RECHAZO_TRABAJADOR_VACIO = "0082";
+
+        public const string MOTIVO_RECHAZO_LICENCIA_NULL = "0091";
+        public const string MOTIVO_RECHAZO_LICENCIA_VACIO = "0092";
+
+        public const string PATENTE_NULL = "0101";
+        public const string PATENTE_VACIO = "0102";
+        public const string PATENTE_LONGITUD_INCORRECTA = "0103";
+        public const string PATENTE_INCORRECTA = "0104";
+        public const string PATENTE_DV_INCORRECTO = "0105";
+
+        public const string MARCA_NULL = "0111";
+        public const string MARCA_VACIO = "0112";
+
+        public const string MODELO_NULL = "0121";
+        public const string MODELO_VACIO = "0122";
+
+        public const string ANIO_VEHICULO_NULL = "0131";
+        public const string ANIO_VEHICULO_VACIO = "0132";
+        public const string ANIO_VEHICULO_INCORRECTO = "0133";
+
+        public const string TIPO_VEHICULO_NULL = "0141";
+        public const string TIPO_VEHICULO_VACIO = "0142";
+
+        public const string FECHA_EXPIRACION_VEHICULO_NULL = "0151";
+        public const string FECHA_EXPIRACION_VEHICULO_VACIO = "0152";
+        public const string FECHA_EXPIRACION_VEHICULO_INCORRECTO = "0153";
+
+        public const string MOTIVO_RECHAZO_VEHICULO_NULL = "0161";
+        public const string MOTIVO_RECHAZO_VEHICULO_VACIO = "0162";
+
+        public const string TIPO_NULL = "0171";
+        public const string TIPO_VACIO = "0172";
+        public const string TIPO_INCORRECTO = "0173";
+
+        public const string IDENTIFICADOR_INCORRECTO = "0181";
+
+        public const string FECHA_DESDE_NULL = "0191";
+        public const string FECHA_DESDE_VACIO = "0192";
+        public const string FECHA_DESDE_INCORRECTO = "0193";
+
+        public const string FECHA_HASTA_NULL = "0201";
+        public const string FECHA_HASTA_VACIO = "0202";
+        public const string FECHA_HASTA_INCORRECTO = "0203";
+
+        public const string FECHA_DESDE_MENOR = "0211";
     }
 }
