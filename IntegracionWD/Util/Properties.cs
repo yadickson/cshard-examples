@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Configuration;
 
-namespace IntegracionWD.Utils
+namespace IntegracionWD.Util
 {
     public class Properties
     {

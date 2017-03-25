@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using IntegracionWD.Constants;
 using IntegracionWD.Domain;
 using IntegracionWD.Exception;
+using IntegracionWD.Util;
 using System.Data.SqlClient;
 
 namespace IntegracionWD.DataBase
@@ -37,7 +38,7 @@ namespace IntegracionWD.DataBase
                 throw new BusinessException("No es posible agregar persona", Errors.AGREGAR_PERSONA_DAO, ex);
             }
 
-            return null;
+            return ResponseFactory.CreateSuccessResponse("Se agregó la persona correctamente");
         }
 
     }

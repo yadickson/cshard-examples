@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ResponseFactory.cs" />
     <Compile Include="ValidadorAnio.cs" />
     <Compile Include="ValidadorAnioVehiculo.cs" />
     <Compile Include="ValidadorFechaHasta.cs" />
@@ -77,6 +78,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{d6385039-0f68-4513-ab82-e1929d8310fe}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Exception\Exception.csproj">
       <Project>{5816b9bf-dee1-4eeb-a920-3da28a6894d8}</Project>
       <Name>Exception</Name>

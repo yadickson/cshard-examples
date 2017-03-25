@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 using IntegracionWD.Domain;
 using IntegracionWD.Constants;
 
-namespace IntegracionWD.Core
+namespace IntegracionWD.Util
 {
     public class ResponseFactory
     {
-        public static Respuesta CreateSuccessResponse(string message, string codigoServicio)
+        public static Respuesta CreateSuccessResponse(string message)
         {
             Respuesta response = new Respuesta();
             response.Codigo = Messages.CODIGO_ACEPTADO;
             response.Mensaje = message;
-            response.CodigoServicio = codigoServicio;
+            response.CodigoServicio = null;
             return response;
         }
 
