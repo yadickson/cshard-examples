@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonDao.cs" />
     <Compile Include="DataBaseFactory.cs" />
     <Compile Include="DataSourceImpl.cs" />
     <Compile Include="DataSourceInterface.cs" />

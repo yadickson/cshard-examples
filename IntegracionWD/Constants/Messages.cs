@@ -14,5 +14,7 @@ namespace IntegracionWD.Constants
 
         public const string CODIGO_TIPO_PERSONA = "P";
         public const string CODIGO_TIPO_VEHICULO = "V";
+
+        public const string CODIGO_DAO_EXITOSO = "EXITOSO";
     }
 }
