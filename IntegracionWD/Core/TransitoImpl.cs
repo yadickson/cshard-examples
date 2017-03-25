@@ -41,7 +41,7 @@ namespace IntegracionWD.Core
                     throw new BusinessException("Fecha desde mayor a fecha hasta", Errors.FECHA_DESDE_MENOR);
                 }
 
-                if (data.Tipo != null && data.Identificador != null)
+                if (data.Tipo != null || data.Identificador != null)
                 {
                     string otipo;
                     string odata;
@@ -57,7 +57,7 @@ namespace IntegracionWD.Core
             catch (BusinessException ex)
             {
                 log.Error("Error al consultar transito", ex);
-                DataBaseFactory.createLoggerDao().Agregar(ex.Message, Business.SERVICIO_TRANSITO + ex.Code);
+                DataBaseFactory.createLoggerTransitoDao().Agregar(ex.Message, Business.SERVICIO_TRANSITO + ex.Code);
                 return ResponseFactory.CreateErrorTransitResponse(ex.Message, Business.SERVICIO_TRANSITO + ex.Code);
             }
         }

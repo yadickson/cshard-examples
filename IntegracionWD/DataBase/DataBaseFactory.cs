@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IntegracionWD.Util;
+using IntegracionWD.Constants;
 
 namespace IntegracionWD.DataBase
 {
@@ -15,9 +16,24 @@ namespace IntegracionWD.DataBase
             return new DataSourceImpl(connectionString);
         }
 
-        public static LoggerDaoInterface createLoggerDao()
+        public static LoggerDaoInterface createLoggerPersonaDao()
         {
-            return new LoggerDaoImpl(createDataSource());
+            return new LoggerDaoImpl(Business.SP_LOG_PERSONAS, createDataSource());
+        }
+
+        public static LoggerDaoInterface createLoggerVehiculoDao()
+        {
+            return new LoggerDaoImpl(Business.SP_LOG_VEHICULOS, createDataSource());
+        }
+
+        public static LoggerDaoInterface createLoggerTransitoDao()
+        {
+            return new LoggerDaoImpl(Business.SP_LOG_TRANSITO, createDataSource());
+        }
+
+        public static LoggerDaoInterface createLoggerIdentificadorDao()
+        {
+            return new LoggerDaoImpl(Business.SP_LOG_IDENTIFICADOR, createDataSource());
         }
 
         public static PersonaDaoInterface createPersonaDao()

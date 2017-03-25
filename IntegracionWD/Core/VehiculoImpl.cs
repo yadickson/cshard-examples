@@ -43,7 +43,7 @@ namespace IntegracionWD.Core
             catch (BusinessException ex)
             {
                 log.Error("Error al agregar vehiculo", ex);
-                DataBaseFactory.createLoggerDao().Agregar(ex.Message, Business.SERVICIO_VEHICULOS + ex.Code);
+                DataBaseFactory.createLoggerVehiculoDao().Agregar(ex.Message, Business.SERVICIO_VEHICULOS + ex.Code);
                 return ResponseFactory.CreateErrorResponse(ex.Message, Business.SERVICIO_VEHICULOS + ex.Code);
             }
         }

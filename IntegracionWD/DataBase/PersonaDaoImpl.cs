@@ -30,7 +30,7 @@ namespace IntegracionWD.DataBase
             try
             {
                 SqlConnection conn = dataSource.getConnection();
-                SqlCommand cmd = new SqlCommand("SP_INSERTAR_PERSONAS", conn);
+                SqlCommand cmd = new SqlCommand(Business.SP_PERSONAS, conn);
 
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@Nombre", SqlDbType.NVarChar).Value = data.Nombre;
@@ -50,14 +50,14 @@ namespace IntegracionWD.DataBase
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
-
-                ValidarResultado(Errors.AGREGAR_PERSONA_DAO);
             }
             catch (System.Exception ex)
             {
                 log.Error("No es posible agregar persona", ex);
                 throw new BusinessException("No es posible agregar persona", Errors.AGREGAR_PERSONA_DAO, ex);
             }
+
+            ValidarResultado(Errors.AGREGAR_PERSONA_DAO);
 
             return ResponseFactory.CreateSuccessResponse("Se agregó la persona correctamente");
         }

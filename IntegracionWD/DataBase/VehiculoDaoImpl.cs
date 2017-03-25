@@ -30,7 +30,7 @@ namespace IntegracionWD.DataBase
             try
             {
                 SqlConnection conn = dataSource.getConnection();
-                SqlCommand cmd = new SqlCommand("SP_INSERTAR_VEHICULOS", conn);
+                SqlCommand cmd = new SqlCommand(Business.SP_VEHICULOS, conn);
 
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@Patente", SqlDbType.NChar).Value = data.Patente;
@@ -48,14 +48,14 @@ namespace IntegracionWD.DataBase
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
-
-                ValidarResultado(Errors.AGREGAR_VEHICULO_DAO);
             }
             catch (System.Exception ex)
             {
                 log.Error("No es posible agregar vehículo", ex);
                 throw new BusinessException("No es posible agregar vehículo", Errors.AGREGAR_VEHICULO_DAO, ex);
             }
+
+            ValidarResultado(Errors.AGREGAR_VEHICULO_DAO);
 
             return ResponseFactory.CreateSuccessResponse("Se agregó el vehículo correctamente");
         }

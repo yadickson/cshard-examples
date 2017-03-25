@@ -42,7 +42,7 @@ namespace IntegracionWD.Core
             catch (BusinessException ex)
             {
                 log.Error("Error al consultar identificador unico", ex);
-                DataBaseFactory.createLoggerDao().Agregar(ex.Message, Business.SERVICIO_IDENTIFICADOR + ex.Code);
+                DataBaseFactory.createLoggerIdentificadorDao().Agregar(ex.Message, Business.SERVICIO_IDENTIFICADOR + ex.Code);
                 return ResponseFactory.CreateErrorIdentifyResponse(ex.Message, Business.SERVICIO_IDENTIFICADOR + ex.Code);
             }
         }

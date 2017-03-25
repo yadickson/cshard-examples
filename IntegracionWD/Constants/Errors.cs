@@ -85,7 +85,9 @@ namespace IntegracionWD.Constants
         public const string FECHA_DESDE_MENOR = "000211";
 
         public const string AGREGAR_PERSONA_DAO = "100001";
-        public const string AGREGAR_VEHICULO_DAO = "100011";
-
+        public const string AGREGAR_VEHICULO_DAO = "100002";
+        public const string CONSULTA_TRANSITO_DAO = "100003";
+        public const string CONSULTA_IDENTIFICADOR_DAO = "100004";
+        public const string AGREGAR_LOG_DAO = "100005";
     }
 }

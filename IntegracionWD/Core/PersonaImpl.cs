@@ -45,7 +45,7 @@ namespace IntegracionWD.Core
             catch (BusinessException ex)
             {
                 log.Error("Error al agregar persona", ex);
-                DataBaseFactory.createLoggerDao().Agregar(ex.Message, Business.SERVICIO_PERSONAS + ex.Code);
+                DataBaseFactory.createLoggerPersonaDao().Agregar(ex.Message, Business.SERVICIO_PERSONAS + ex.Code);
                 return ResponseFactory.CreateErrorResponse(ex.Message, Business.SERVICIO_PERSONAS + ex.Code);
             }
         }
