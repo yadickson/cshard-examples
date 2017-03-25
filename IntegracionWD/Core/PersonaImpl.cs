@@ -26,7 +26,7 @@ namespace IntegracionWD.Core
         {
             log.Info("Agregar persona : " + data);
 
-            try 
+            try
             {
                 data.Nombre = new ValidadorNombre().Validar(data.Nombre);
                 data.Apellido = new ValidadorApellido().Validar(data.Apellido);
@@ -45,6 +45,7 @@ namespace IntegracionWD.Core
             catch (BusinessException ex)
             {
                 log.Error("Error al agregar persona", ex);
+                DataBaseFactory.createLoggerDao().Agregar(ex.Message, Business.SERVICIO_PERSONAS + ex.Code);
                 return ResponseFactory.CreateErrorResponse(ex.Message, Business.SERVICIO_PERSONAS + ex.Code);
             }
         }

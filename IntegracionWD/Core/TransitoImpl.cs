@@ -57,6 +57,7 @@ namespace IntegracionWD.Core
             catch (BusinessException ex)
             {
                 log.Error("Error al consultar transito", ex);
+                DataBaseFactory.createLoggerDao().Agregar(ex.Message, Business.SERVICIO_TRANSITO + ex.Code);
                 return ResponseFactory.CreateErrorTransitResponse(ex.Message, Business.SERVICIO_TRANSITO + ex.Code);
             }
         }

@@ -45,6 +45,8 @@
     <Compile Include="DataBaseFactory.cs" />
     <Compile Include="DataSourceImpl.cs" />
     <Compile Include="DataSourceInterface.cs" />
+    <Compile Include="LoggerDaoImpl.cs" />
+    <Compile Include="LoggerDaoInterface.cs" />
     <Compile Include="TransitoDaoImpl.cs" />
     <Compile Include="IdentificadorUnicoDaoImpl.cs" />
     <Compile Include="VehiculoDaoImpl.cs" />

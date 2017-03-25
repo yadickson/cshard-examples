@@ -15,6 +15,11 @@ namespace IntegracionWD.DataBase
             return new DataSourceImpl(connectionString);
         }
 
+        public static LoggerDaoInterface createLoggerDao()
+        {
+            return new LoggerDaoImpl(createDataSource());
+        }
+
         public static PersonaDaoInterface createPersonaDao()
         {
             return new PersonaDaoImpl(createDataSource());
