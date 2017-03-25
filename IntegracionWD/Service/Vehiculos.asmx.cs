@@ -13,9 +13,9 @@ namespace IntegracionWD.Service
     [System.ComponentModel.ToolboxItem(false)]
     public class Vehiculos : System.Web.Services.WebService
     {
-        private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Vehiculos));
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Vehiculos));
 
-        private VehiculoInterface vehiculo = AbstractFactoryMethod.createVehiculo();
+        private VehiculoInterface vehiculo = CoreFactory.createVehiculo();
 
         public void SetVehiculo(VehiculoInterface vehiculo)
         {

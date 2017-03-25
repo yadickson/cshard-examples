@@ -43,7 +43,7 @@ namespace IntegracionWD.UnitTest
         public void TestValidarRUT()
         {
             string result = validador.Validar("123.456-0");
-            string expected = "123456" + Messages.SEPARADOR_DV + "0";
+            string expected = "123456" + Format.SEPARADOR_DV + "0";
             Assert.AreEqual(expected, result);
         }
 

@@ -66,7 +66,12 @@
     <Content Include="Identificador.asmx" />
     <Content Include="Transito.asmx" />
     <Content Include="Vehiculos.asmx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="log4net.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Personas.asmx" />
   </ItemGroup>
   <ItemGroup>

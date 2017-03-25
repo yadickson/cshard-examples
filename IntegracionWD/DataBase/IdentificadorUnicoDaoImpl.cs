@@ -9,7 +9,14 @@ namespace IntegracionWD.DataBase
 {
     public class IdentificadorUnicoDaoImpl : IdentificadorUnicoDaoInterface
     {
-        private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(IdentificadorUnicoDaoImpl));
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(IdentificadorUnicoDaoImpl));
+
+        private DataSourceInterface dataSource;
+
+        public IdentificadorUnicoDaoImpl(DataSourceInterface dataSource)
+        {
+            this.dataSource = dataSource;
+        }
 
         public RespuestaIdentificador ObtenerIdentificadorUnico(DataIdentificador data)
         {

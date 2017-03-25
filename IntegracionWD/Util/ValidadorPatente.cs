@@ -43,7 +43,7 @@ namespace IntegracionWD.Util
                 throw new BusinessException("Digito verificador de patente incorrecto", Errors.PATENTE_DV_INCORRECTO);
             }
 
-            return patente + Messages.SEPARADOR_DV + dv.ToUpper();
+            return patente + Format.SEPARADOR_DV + dv.ToUpper();
         }
 
         protected void ValidarLongitud(string input, out string output)

@@ -13,7 +13,7 @@ namespace IntegracionWD.Core
 {
     public class PersonaImpl : PersonaInterface
     {
-        private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(PersonaImpl));
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(PersonaImpl));
 
         private PersonaDaoInterface personaDao;
 
@@ -45,7 +45,7 @@ namespace IntegracionWD.Core
             catch (BusinessException ex)
             {
                 log.Error("Error al agregar persona", ex);
-                return ResponseFactory.CreateErrorResponse(Business.SERVICIO_PERSONAS + ex.Code);
+                return ResponseFactory.CreateErrorResponse(ex.Message, Business.SERVICIO_PERSONAS + ex.Code);
             }
         }
     }

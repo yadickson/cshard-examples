@@ -13,9 +13,9 @@ namespace IntegracionWD.Service
     [System.ComponentModel.ToolboxItem(false)]
     public class Transito : System.Web.Services.WebService
     {
-        private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Transito));
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Transito));
 
-        private TransitoInterface transito = AbstractFactoryMethod.createTransito();
+        private TransitoInterface transito = CoreFactory.createTransito();
 
         public void SetTransito(TransitoInterface transito)
         {

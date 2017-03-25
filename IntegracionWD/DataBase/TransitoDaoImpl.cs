@@ -9,7 +9,14 @@ namespace IntegracionWD.DataBase
 {
     public class TransitoDaoImpl : TransitoDaoInterface
     {
-        private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(TransitoDaoImpl));
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(TransitoDaoImpl));
+
+        private DataSourceInterface dataSource;
+
+        public TransitoDaoImpl(DataSourceInterface dataSource)
+        {
+            this.dataSource = dataSource;
+        }
 
         public RespuestaTransito ObtenerListadoTransito(DataTransito data)
         {

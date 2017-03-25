@@ -11,6 +11,7 @@ namespace IntegracionWD.Domain
     {
         private string codigo;
         private string mensaje;
+        private string codigoServicio;
         private string identificador;
 
         public string Codigo
@@ -23,6 +24,12 @@ namespace IntegracionWD.Domain
         {
             get { return mensaje; }
             set { mensaje = value; }
+        }
+
+        public string CodigoServicio
+        {
+            get { return codigoServicio; }
+            set { codigoServicio = value; }
         }
 
         public string Identificador

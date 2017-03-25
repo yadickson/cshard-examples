@@ -13,9 +13,9 @@ namespace IntegracionWD.Service
     [System.ComponentModel.ToolboxItem(false)]
     public class Identificador : System.Web.Services.WebService
     {
-        private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Identificador));
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Identificador));
 
-        private IdentificadorUnicoInterface identificadorUnico = AbstractFactoryMethod.createIdentificadorUnico();
+        private IdentificadorUnicoInterface identificadorUnico = CoreFactory.createIdentificadorUnico();
 
         public void SetIdentificadorUnico(IdentificadorUnicoInterface identificadorUnico)
         {

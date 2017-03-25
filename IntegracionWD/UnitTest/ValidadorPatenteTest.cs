@@ -71,7 +71,7 @@ namespace IntegracionWD.UnitTest
         public void TestValidarPatente1()
         {
             string result = validador.Validar("AA8159-5");
-            string expected = "AA8159" + Messages.SEPARADOR_DV + "5";
+            string expected = "AA8159" + Format.SEPARADOR_DV + "5";
             Assert.AreEqual(expected, result);
         }
 
@@ -79,7 +79,7 @@ namespace IntegracionWD.UnitTest
         public void TestValidarPatente2()
         {
             string result = validador.Validar("AA1111-2");
-            string expected = "AA1111" + Messages.SEPARADOR_DV + "2";
+            string expected = "AA1111" + Format.SEPARADOR_DV + "2";
             Assert.AreEqual(expected, result);
         }
 
@@ -87,7 +87,7 @@ namespace IntegracionWD.UnitTest
         public void TestValidarPatente3()
         {
             string result = validador.Validar("BBBB10-8");
-            string expected = "BBBB10" + Messages.SEPARADOR_DV + "8";
+            string expected = "BBBB10" + Format.SEPARADOR_DV + "8";
             Assert.AreEqual(expected, result);
         }
 
@@ -95,7 +95,7 @@ namespace IntegracionWD.UnitTest
         public void TestValidarPatente4()
         {
             string result = validador.Validar("BCBC10-9");
-            string expected = "BCBC10" + Messages.SEPARADOR_DV + "9";
+            string expected = "BCBC10" + Format.SEPARADOR_DV + "9";
             Assert.AreEqual(expected, result);
         }
 
@@ -103,7 +103,7 @@ namespace IntegracionWD.UnitTest
         public void TestValidarPatente5()
         {
             string result = validador.Validar("BCBP10-6");
-            string expected = "BCBP10" + Messages.SEPARADOR_DV + "6";
+            string expected = "BCBP10" + Format.SEPARADOR_DV + "6";
             Assert.AreEqual(expected, result);
         }
 
@@ -111,7 +111,7 @@ namespace IntegracionWD.UnitTest
         public void TestValidarPatente6()
         {
             string result = validador.Validar("BCBR10-9");
-            string expected = "BCBR10" + Messages.SEPARADOR_DV + "9";
+            string expected = "BCBR10" + Format.SEPARADOR_DV + "9";
             Assert.AreEqual(expected, result);
         }
 
@@ -119,7 +119,7 @@ namespace IntegracionWD.UnitTest
         public void TestValidarPatente7()
         {
             string result = validador.Validar("BCBS10-5");
-            string expected = "BCBS10" + Messages.SEPARADOR_DV + "5";
+            string expected = "BCBS10" + Format.SEPARADOR_DV + "5";
             Assert.AreEqual(expected, result);
         }
 
@@ -127,7 +127,7 @@ namespace IntegracionWD.UnitTest
         public void TestValidarPatente8()
         {
             string result = validador.Validar("BCBZ10-3");
-            string expected = "BCBZ10" + Messages.SEPARADOR_DV + "3";
+            string expected = "BCBZ10" + Format.SEPARADOR_DV + "3";
             Assert.AreEqual(expected, result);
         }
 

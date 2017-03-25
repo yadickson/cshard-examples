@@ -13,7 +13,7 @@ namespace IntegracionWD.Core
 {
     public class TransitoImpl : TransitoInterface
     {
-        private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(TransitoImpl));
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(TransitoImpl));
 
         private TransitoDaoInterface transitoDao;
 
@@ -46,7 +46,7 @@ namespace IntegracionWD.Core
                     string otipo;
                     string odata;
 
-                    new ValidadorIdentificador().Validar(data.Tipo, data.Identificador, out otipo, out odata);
+                    new ValidadorTipoIdentificador().Validar(data.Tipo, data.Identificador, out otipo, out odata);
 
                     data.Tipo = otipo;
                     data.Identificador = odata;
@@ -57,7 +57,7 @@ namespace IntegracionWD.Core
             catch (BusinessException ex)
             {
                 log.Error("Error al consultar transito", ex);
-                return ResponseFactory.CreateErrorTransitResponse(Business.SERVICIO_TRANSITO + ex.Code);
+                return ResponseFactory.CreateErrorTransitResponse(ex.Message, Business.SERVICIO_TRANSITO + ex.Code);
             }
         }
     }

@@ -7,7 +7,7 @@ using IntegracionWD.Constants;
 
 namespace IntegracionWD.Util
 {
-    public class ValidadorIdentificador
+    public class ValidadorTipoIdentificador
     {
         public void Validar(string tipo, string data, out string otipo, out string odata)
         {

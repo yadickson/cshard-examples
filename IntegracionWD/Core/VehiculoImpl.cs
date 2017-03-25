@@ -13,7 +13,7 @@ namespace IntegracionWD.Core
 {
     public class VehiculoImpl : VehiculoInterface
     {
-        private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(VehiculoImpl));
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(VehiculoImpl));
         
         private VehiculoDaoInterface vehiculoDao;
 
@@ -43,7 +43,7 @@ namespace IntegracionWD.Core
             catch (BusinessException ex)
             {
                 log.Error("Error al agregar vehiculo", ex);
-                return ResponseFactory.CreateErrorResponse(Business.SERVICIO_VEHICULOS + ex.Code);
+                return ResponseFactory.CreateErrorResponse(ex.Message, Business.SERVICIO_VEHICULOS + ex.Code);
             }
         }
     }

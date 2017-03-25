@@ -26,7 +26,7 @@ namespace IntegracionWD.Util
                 throw new BusinessException("Digito verificador de RUT incorrecto", Errors.RUT_DV_INCORRECTO);
             }
 
-            return rut + Messages.SEPARADOR_DV + dv.ToUpper();
+            return rut + Format.SEPARADOR_DV + dv.ToUpper();
         }
 
         protected void ValidarLongitud(string input, out string output)

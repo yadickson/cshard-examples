@@ -13,9 +13,9 @@ namespace IntegracionWD.Service
     [System.ComponentModel.ToolboxItem(false)]
     public class Personas : System.Web.Services.WebService
     {
-        private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Personas));
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Personas));
         
-        private PersonaInterface persona = AbstractFactoryMethod.createPersona();
+        private PersonaInterface persona = CoreFactory.createPersona();
 
         public void SetPersona(PersonaInterface persona)
         {
