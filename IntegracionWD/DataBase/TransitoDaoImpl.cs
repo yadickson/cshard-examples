@@ -49,12 +49,11 @@ namespace IntegracionWD.DataBase
                 while (reader.Read())
                 {
                     ConsultaTransito consulta = new ConsultaTransito();
-                    consulta.Fecha = reader.GetString(1);
-                    consulta.Sentido = reader.GetString(2);
-                    consulta.PuntoDeControl = reader.GetString(3);
-                    consulta.Tipo = reader.GetString(4);
-                    consulta.Identificador = reader.GetString(5);
-
+                    consulta.Fecha = reader.GetString(0);
+                    consulta.Sentido = reader.GetString(1);
+                    consulta.PuntoDeControl = reader.GetString(2);
+                    consulta.Tipo = reader.GetString(3);
+                    consulta.Identificador = reader.GetString(4);
                     listado.Add(consulta);
                 }
 
