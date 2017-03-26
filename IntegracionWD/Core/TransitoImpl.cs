@@ -38,7 +38,7 @@ namespace IntegracionWD.Core
                 }
                 else
                 {
-                    throw new BusinessException("Fecha desde mayor a fecha hasta", Errors.FECHA_DESDE_MENOR);
+                    throw new BusinessException("Fecha desde mayor a fecha hasta [FechaDesde:" + data.FechaDesde + "][FechaHasta:" + data.FechaHasta + "]", Errors.FECHA_DESDE_MENOR);
                 }
 
                 if (data.Tipo != null || data.Identificador != null)

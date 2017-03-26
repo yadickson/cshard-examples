@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace IntegracionWD.Domain
 {
     [Serializable]
-    public class ListadoTransito
+    public class ConsultaTransito
     {
         private string fecha;
         private string sentido;
         private string puntoDeControl;
+        private string tipo; // persona(P)/vehiculo(V)
         private string identificador; // RUT/Patente
-        private string tipo; // persona/vehiculo
 
         public string Fecha
         {
@@ -33,16 +33,16 @@ namespace IntegracionWD.Domain
             set { puntoDeControl = value; }
         }
 
-        public string Identificador
-        {
-            get { return identificador; }
-            set { identificador = value; }
-        }
-
         public string Tipo
         {
             get { return tipo; }
             set { tipo = value; }
+        }
+
+        public string Identificador
+        {
+            get { return identificador; }
+            set { identificador = value; }
         }
     }
 }

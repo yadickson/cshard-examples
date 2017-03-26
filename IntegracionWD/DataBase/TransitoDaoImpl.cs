@@ -27,7 +27,7 @@ namespace IntegracionWD.DataBase
         {
             log.Info("Obtener listado transito : " + data);
 
-            ListadoTransito listado = null;
+            List<ConsultaTransito> listado = new List<ConsultaTransito>();
             SqlDataReader reader;
 
             try
@@ -45,6 +45,19 @@ namespace IntegracionWD.DataBase
 
                 conn.Open();
                 reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ConsultaTransito consulta = new ConsultaTransito();
+                    consulta.Fecha = reader.GetString(1);
+                    consulta.Sentido = reader.GetString(2);
+                    consulta.PuntoDeControl = reader.GetString(3);
+                    consulta.Tipo = reader.GetString(4);
+                    consulta.Identificador = reader.GetString(5);
+
+                    listado.Add(consulta);
+                }
+
                 conn.Close();
             }
             catch (System.Exception ex)

@@ -43,7 +43,7 @@
     <Compile Include="DataTransito.cs" />
     <Compile Include="DataVehiculo.cs" />
     <Compile Include="DataPersona.cs" />
-    <Compile Include="ListadoTransito.cs" />
+    <Compile Include="ConsultaTransito.cs" />
     <Compile Include="RespuestaIdentificador.cs" />
     <Compile Include="RespuestaTransito.cs" />
     <Compile Include="Respuesta.cs" />

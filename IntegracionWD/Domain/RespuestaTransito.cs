@@ -12,7 +12,7 @@ namespace IntegracionWD.Domain
         private string codigo;
         private string mensaje;
         private string codigoServicio;
-        private ListadoTransito listadoTransito;
+        private List<ConsultaTransito> listadoTransito;
 
         public string Codigo
         {
@@ -32,7 +32,7 @@ namespace IntegracionWD.Domain
             set { codigoServicio = value; }
         }
 
-        public ListadoTransito ListadoTransito
+        public List<ConsultaTransito> ListadoTransito
         {
             get { return listadoTransito; }
             set { listadoTransito = value; }

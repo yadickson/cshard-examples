@@ -9,8 +9,8 @@ namespace IntegracionWD.Domain
     [Serializable]
     public class DataIdentificador
     {
-        private string tipo { get; set; } // persona(P)/vehiculo(V)
-        private string identificador { get; set; } // RUT/Patente
+        private string tipo; // persona(P)/vehiculo(V)
+        private string identificador; // RUT/Patente
 
         public string Tipo
         {
