@@ -18,9 +18,9 @@ namespace IntegracionWD.Constants
         public const string SP_TRANSITO = "ConsultaTransito";
         public const string SP_IDENTIFICADOR = "ConsultaIdentificador";
 
-        public const string SP_LOG_PERSONAS = "LogPersona";
-        public const string SP_LOG_VEHICULOS = "LogVehiculo";
-        public const string SP_LOG_TRANSITO = "LogTransito";
-        public const string SP_LOG_IDENTIFICADOR = "LogIdentificador";
+        public const string SP_LOG_PERSONAS = "InsertarLogPersonas";
+        public const string SP_LOG_VEHICULOS = "InsertarLogVehiculos";
+        public const string SP_LOG_TRANSITO = "InsertarLogConsultaTransito";
+        public const string SP_LOG_IDENTIFICADOR = "InsertarLogConsultaIdentificador";
     }
 }
