@@ -36,7 +36,7 @@ namespace IntegracionWD.DataBase
 
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@Entrada", SqlDbType.NVarChar).Value = message;
-                cmd.Parameters.Add("@Codigo", SqlDbType.NVarChar).Value = codigoServicio;
+                cmd.Parameters.Add("@Codigo", SqlDbType.VarChar).Value = codigoServicio;
 
                 AgregarParametrosSalida(cmd);
 

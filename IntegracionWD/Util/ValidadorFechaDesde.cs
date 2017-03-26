@@ -18,7 +18,7 @@ namespace IntegracionWD.Util
 
             if (!new ValidadorFecha().Validar(output))
             {
-                throw new BusinessException("Fecha desde es incorrecta", Errors.FECHA_DESDE_INCORRECTO);
+                throw new BusinessException("Fecha desde es incorrecta [" + input + "]", Errors.FECHA_DESDE_INCORRECTO);
             }
 
             return output;

@@ -18,7 +18,7 @@ namespace IntegracionWD.Util
 
             if (!new ValidadorFecha().Validar(output))
             {
-                throw new BusinessException("Fecha expiracion de la licencia incorrecta", Errors.FECHA_EXPIRACION_LICENCIA_INCORRECTO);
+                throw new BusinessException("Fecha expiracion de la licencia incorrecta [" + input + "]", Errors.FECHA_EXPIRACION_LICENCIA_INCORRECTO);
             }
 
             return output;

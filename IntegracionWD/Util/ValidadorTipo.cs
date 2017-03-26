@@ -18,9 +18,9 @@ namespace IntegracionWD.Util
 
             output = output.ToUpper();
 
-            if (!Messages.CODIGO_TIPO_PERSONA.Equals(output) || !Messages.CODIGO_TIPO_VEHICULO.Equals(output))
+            if (!Messages.CODIGO_TIPO_PERSONA.Equals(output) && !Messages.CODIGO_TIPO_VEHICULO.Equals(output))
             {
-                throw new BusinessException("Tipo incorrecto", Errors.TIPO_INCORRECTO);
+                throw new BusinessException("Tipo incorrecto [" + input + "]", Errors.TIPO_INCORRECTO);
             }
 
             return output;

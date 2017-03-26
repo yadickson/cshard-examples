@@ -9,19 +9,19 @@ namespace IntegracionWD.Domain
     [Serializable]
     public class DataIdentificador
     {
+        private string tipo { get; set; } // persona(P)/vehiculo(V)
         private string identificador { get; set; } // RUT/Patente
-        private string tipo { get; set; } // persona/vehiculo
-        
-        public string Identificador
-        {
-            get { return identificador; }
-            set { identificador = value; }
-        }
 
         public string Tipo
         {
             get { return tipo; }
             set { tipo = value; }
+        }
+        
+        public string Identificador
+        {
+            get { return identificador; }
+            set { identificador = value; }
         }
     }
 }

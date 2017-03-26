@@ -28,6 +28,16 @@ namespace IntegracionWD.Util
             return response;
         }
 
+        public static RespuestaIdentificador CreateIdentifyResponse(string mensaje, string id)
+        {
+            RespuestaIdentificador response = new RespuestaIdentificador();
+            response.Codigo = Messages.CODIGO_ACEPTADO;
+            response.Mensaje = mensaje;
+            response.CodigoServicio = null;
+            response.Identificador = id;
+            return response;
+        }
+
         public static RespuestaIdentificador CreateErrorIdentifyResponse(string message, string codigoServicio)
         {
             RespuestaIdentificador response = new RespuestaIdentificador();

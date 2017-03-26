@@ -13,8 +13,8 @@ namespace IntegracionWD.Util
         public string Validar(string input)
         {
             string output;
-            ValidarNulo(input, "Tipo pase nulo", Errors.TIPO_PASE_NULL);
-            ValidarVacio(input, out output, "Apellido vacio", Errors.TIPO_PASE_VACIO);
+            ValidarNulo(input, "Contrato nulo", Errors.TIPO_PASE_NULL);
+            ValidarVacio(input, out output, "Contrato vacio", Errors.TIPO_PASE_VACIO);
             return output;
         }
     }

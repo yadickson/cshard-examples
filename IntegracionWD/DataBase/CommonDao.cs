@@ -19,7 +19,7 @@ namespace IntegracionWD.DataBase
         {
             resultado = new SqlParameter("@Resultado", SqlDbType.NVarChar);
             resultado.Direction = ParameterDirection.Output;
-            resultado.Size = 50;
+            resultado.Size = 10;
             cmd.Parameters.Add(resultado);
 
             mensaje = new SqlParameter("@Mensaje", SqlDbType.NVarChar);

@@ -33,14 +33,14 @@ namespace IntegracionWD.DataBase
                 SqlCommand cmd = new SqlCommand(Business.SP_VEHICULOS, conn);
 
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@Patente", SqlDbType.NChar).Value = data.Patente;
+                cmd.Parameters.Add("@Patente", SqlDbType.VarChar).Value = data.Patente;
                 cmd.Parameters.Add("@Marca", SqlDbType.NVarChar).Value = data.Marca;
                 cmd.Parameters.Add("@Modelo", SqlDbType.NVarChar).Value = data.Modelo;
-                cmd.Parameters.Add("@Anio", SqlDbType.NChar).Value = data.Anio;
+                cmd.Parameters.Add("@Anio", SqlDbType.VarChar).Value = data.Anio;
                 cmd.Parameters.Add("@TipoVehiculo", SqlDbType.NVarChar).Value = data.TipoVehiculo;
                 cmd.Parameters.Add("@Contrato", SqlDbType.NVarChar).Value = data.Contrato;
                 cmd.Parameters.Add("@RazonSocial", SqlDbType.NVarChar).Value = data.RazonSocial;
-                cmd.Parameters.Add("@FechaExpiracion", SqlDbType.NChar).Value = data.FechaExpiracion;
+                cmd.Parameters.Add("@FechaExpiracion", SqlDbType.VarChar).Value = data.FechaExpiracion;
                 cmd.Parameters.Add("@MotivoRechazo", SqlDbType.NVarChar).Value = data.MotivoRechazo;
 
                 AgregarParametrosSalida(cmd);

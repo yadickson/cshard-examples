@@ -18,7 +18,7 @@ namespace IntegracionWD.Util
 
             if (!new ValidadorFecha().Validar(output))
             {
-                throw new BusinessException("Fecha expiracion del vehiculo incorrecta", Errors.FECHA_EXPIRACION_VEHICULO_INCORRECTO);
+                throw new BusinessException("Fecha expiracion del vehiculo incorrecta [" + input + "]", Errors.FECHA_EXPIRACION_VEHICULO_INCORRECTO);
             }
 
             return output;

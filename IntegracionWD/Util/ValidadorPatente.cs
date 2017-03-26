@@ -20,7 +20,7 @@ namespace IntegracionWD.Util
 
             ValidarNulo(input, "Patente nula", Errors.PATENTE_NULL);
             ValidarVacio(input, out ipatente, "Patente vacia", Errors.PATENTE_VACIO);
-            ValidarLongitud(ipatente, out ipatente);
+            ValidarLongitud(input, ipatente, out ipatente);
 
             string patente = ipatente.Substring(0, ipatente.Length - 1).ToUpper();
             string dv = ipatente.Substring(ipatente.Length - 1);
@@ -31,46 +31,46 @@ namespace IntegracionWD.Util
 
             if (esPatenteAntigua)
             {
-                ValidarPatenteAntigua(patente, out numero);
+                ValidarPatenteAntigua(input, patente, out numero);
             }
             else
             {
-                ValidarPatenteActual(patente, out numero);
+                ValidarPatenteActual(input, patente, out numero);
             }
 
             if (!new ValidadorModulo11().Validar(numero, dv))
             {
-                throw new BusinessException("Digito verificador de patente incorrecto", Errors.PATENTE_DV_INCORRECTO);
+                throw new BusinessException("Digito verificador de patente incorrecto [" + input + "]", Errors.PATENTE_DV_INCORRECTO);
             }
 
             return patente + Format.SEPARADOR_DV + dv.ToUpper();
         }
 
-        protected void ValidarLongitud(string input, out string output)
+        protected void ValidarLongitud(string pInput, string input, out string output)
         {
             output = input.Replace("-", "");
 
             if (output.Length != 7)
             {
-                throw new BusinessException("Patente con longitud incorrecta", Errors.PATENTE_LONGITUD_INCORRECTA);
+                throw new BusinessException("Patente con longitud incorrecta [" + pInput + "]", Errors.PATENTE_LONGITUD_INCORRECTA);
             }
 
         }
 
-        protected void ValidarPatenteAntigua(string input, out string output)
+        protected void ValidarPatenteAntigua(string pInput, string input, out string output)
         {
             int pos = listAntigua.IndexOf(input.Substring(0, 2).ToUpper());
 
             if (pos == -1)
             {
-                throw new BusinessException("Patente no valida", Errors.PATENTE_INCORRECTA);
+                throw new BusinessException("Patente antigua no valida [" + pInput + "]", Errors.PATENTE_INCORRECTA);
             }
 
             output = (pos + 1).ToString() + input.Substring(2, 4);
 
         }
 
-        protected void ValidarPatenteActual(string input, out string output)
+        protected void ValidarPatenteActual(string pInput, string input, out string output)
         {
             output = string.Empty;
             char[] letras = input.Substring(0, 4).ToCharArray();
@@ -81,14 +81,14 @@ namespace IntegracionWD.Util
 
             if (!m.Success)
             {
-                throw new BusinessException("Patente no valida", Errors.PATENTE_INCORRECTA);
+                throw new BusinessException("Patente no valida [" + pInput + "]", Errors.PATENTE_INCORRECTA);
             }
 
             int nFinal = int.Parse(numeroFinal);
 
             if (nFinal < 10)
             {
-                throw new BusinessException("Patente no valida", Errors.PATENTE_INCORRECTA);
+                throw new BusinessException("Patente no valida [" + pInput + "]", Errors.PATENTE_INCORRECTA);
             }
 
             foreach (char c in letras)
@@ -98,7 +98,7 @@ namespace IntegracionWD.Util
 
                 if (pos == -1)
                 {
-                    throw new BusinessException("Patente no valida", Errors.PATENTE_INCORRECTA);
+                    throw new BusinessException("Patente no valida [" + pInput + "]", Errors.PATENTE_INCORRECTA);
                 }
 
                 if (pos == 9)

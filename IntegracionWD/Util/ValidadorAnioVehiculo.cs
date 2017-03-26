@@ -18,7 +18,7 @@ namespace IntegracionWD.Util
 
             if (!new ValidadorAnio().Validar(output))
             {
-                throw new BusinessException("Anio incorrecto", Errors.ANIO_VEHICULO_INCORRECTO);
+                throw new BusinessException("Anio incorrecto [" + input + "]", Errors.ANIO_VEHICULO_INCORRECTO);
             }
 
             return output;

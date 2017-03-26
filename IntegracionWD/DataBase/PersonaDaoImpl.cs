@@ -35,14 +35,14 @@ namespace IntegracionWD.DataBase
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@Nombre", SqlDbType.NVarChar).Value = data.Nombre;
                 cmd.Parameters.Add("@Apellido", SqlDbType.NVarChar).Value = data.Apellido;
-                cmd.Parameters.Add("@RUT", SqlDbType.NChar).Value = data.RUT;
-                cmd.Parameters.Add("@Tarjeta", SqlDbType.NVarChar).Value = data.Tarjeta;
+                cmd.Parameters.Add("@RUT", SqlDbType.VarChar).Value = data.RUT;
+                cmd.Parameters.Add("@Tarjeta", SqlDbType.VarChar).Value = data.Tarjeta;
                 cmd.Parameters.Add("@TipoPase", SqlDbType.NVarChar).Value = data.TipoPase;
                 cmd.Parameters.Add("@Contrato", SqlDbType.NVarChar).Value = data.Contrato;
                 cmd.Parameters.Add("@RazonSocial", SqlDbType.NVarChar).Value = data.RazonSocial;
-                cmd.Parameters.Add("@FechaExpiracionTrabajador", SqlDbType.NChar).Value = data.FechaExpiracionTrabajador;
+                cmd.Parameters.Add("@FechaExpiracionTrabajador", SqlDbType.VarChar).Value = data.FechaExpiracionTrabajador;
                 cmd.Parameters.Add("@MotivoRechazoTrabajador", SqlDbType.NVarChar).Value = data.MotivoRechazoTrabajor;
-                cmd.Parameters.Add("@FechaExpiracionLicencia", SqlDbType.NChar).Value = data.FechaExpiracionLicencia;
+                cmd.Parameters.Add("@FechaExpiracionLicencia", SqlDbType.VarChar).Value = data.FechaExpiracionLicencia;
                 cmd.Parameters.Add("@MotivoRechazoLicencia", SqlDbType.NVarChar).Value = data.MotivoRechazoLicencia;
 
                 AgregarParametrosSalida(cmd);
