@@ -26,10 +26,9 @@ namespace IntegracionWD.DataBase
         public RespuestaTransito ObtenerListadoTransito(DataTransito data)
         {
             log.Info("Obtener listado transito : " + data);
-            
-            ListadoTransito listado = null;
 
-            SqlParameter id = new SqlParameter("@Id", SqlDbType.C);
+            ListadoTransito listado = null;
+            SqlDataReader reader;
 
             try
             {
@@ -42,25 +41,21 @@ namespace IntegracionWD.DataBase
                 cmd.Parameters.Add("@Identificador", SqlDbType.VarChar).Value = data.Identificador;
                 cmd.Parameters.Add("@Tipo", SqlDbType.VarChar).Value = data.Tipo;
 
-                id.Direction = ParameterDirection.Output;
-                id.Size = 20;
-                cmd.Parameters.Add(id);
-
                 AgregarParametrosSalida(cmd);
 
                 conn.Open();
-                cmd.ExecuteNonQuery();
+                reader = cmd.ExecuteReader();
                 conn.Close();
             }
             catch (System.Exception ex)
             {
-                log.Error("No es posible realizar la consulta de transito [FechaDesde:" + data.FechaDesde + "][FechaHasta:" + data.FechaHasta+ "][Tipo:" + data.Tipo + "][Identificador:" + data.Identificador + "]", ex);
-                throw new BusinessException("No es posible realizar la consulta de transito [FechaDesde:" + data.FechaDesde + "][FechaHasta:" + data.FechaHasta+ "][Tipo:" + data.Tipo + "][Identificador:" + data.Identificador + "]", Errors.CONSULTA_TRANSITO_DAO, ex);
+                log.Error("No es posible realizar la consulta de transito [FechaDesde:" + data.FechaDesde + "][FechaHasta:" + data.FechaHasta + "][Tipo:" + data.Tipo + "][Identificador:" + data.Identificador + "]", ex);
+                throw new BusinessException("No es posible realizar la consulta de transito [FechaDesde:" + data.FechaDesde + "][FechaHasta:" + data.FechaHasta + "][Tipo:" + data.Tipo + "][Identificador:" + data.Identificador + "]", Errors.CONSULTA_TRANSITO_DAO, ex);
             }
 
             ValidarResultado(Errors.CONSULTA_TRANSITO_DAO);
 
-            return ResponseFactory.CreateTransitoResponse(listado, Convert.ToString(id.Value));
+            return ResponseFactory.CreateTransitoResponse(listado);
         }
 
     }
