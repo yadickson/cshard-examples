@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IntegracionWD.Domain
+namespace IntegracionWD.Model
 {
     [Serializable]
-    public class ConsultaTransito
+    public class Transito
     {
         private string fecha;
         private string sentido;

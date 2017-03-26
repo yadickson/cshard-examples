@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IntegracionWD.Domain;
+using IntegracionWD.Model;
 using IntegracionWD.Constants;
 
 namespace IntegracionWD.Util
@@ -48,7 +49,7 @@ namespace IntegracionWD.Util
             return response;
         }
 
-        public static RespuestaTransito CreateTransitoResponse(List<ConsultaTransito> listado)
+        public static RespuestaTransito CreateTransitoResponse(List<Transito> listado)
         {
             RespuestaTransito response = new RespuestaTransito();
             response.Codigo = Messages.CODIGO_ACEPTADO;

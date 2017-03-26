@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IntegracionWD.Model;
 
 namespace IntegracionWD.Domain
 {
@@ -12,7 +13,7 @@ namespace IntegracionWD.Domain
         private string codigo;
         private string mensaje;
         private string codigoServicio;
-        private List<ConsultaTransito> listadoTransito;
+        private List<Transito> listadoTransito;
 
         public string Codigo
         {
@@ -32,7 +33,7 @@ namespace IntegracionWD.Domain
             set { codigoServicio = value; }
         }
 
-        public List<ConsultaTransito> ListadoTransito
+        public List<Transito> ListadoTransito
         {
             get { return listadoTransito; }
             set { listadoTransito = value; }

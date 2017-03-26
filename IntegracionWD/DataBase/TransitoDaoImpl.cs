@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IntegracionWD.Constants;
 using IntegracionWD.Domain;
+using IntegracionWD.Model;
 using IntegracionWD.Exception;
 using IntegracionWD.Util;
 using System.Data.SqlClient;
@@ -27,7 +28,7 @@ namespace IntegracionWD.DataBase
         {
             log.Info("Obtener listado transito : " + data);
 
-            List<ConsultaTransito> listado = new List<ConsultaTransito>();
+            List<Transito> listado = new List<Transito>();
             SqlDataReader reader;
 
             try
@@ -48,7 +49,7 @@ namespace IntegracionWD.DataBase
 
                 while (reader.Read())
                 {
-                    ConsultaTransito consulta = new ConsultaTransito();
+                    Transito consulta = new Transito();
                     consulta.Fecha = reader.GetString(0);
                     consulta.Sentido = reader.GetString(1);
                     consulta.PuntoDeControl = reader.GetString(2);
