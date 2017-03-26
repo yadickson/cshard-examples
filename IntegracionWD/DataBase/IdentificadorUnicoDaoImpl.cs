@@ -10,7 +10,6 @@ using IntegracionWD.Util;
 using System.Data.SqlClient;
 using System.Data;
 
-
 namespace IntegracionWD.DataBase
 {
     public class IdentificadorUnicoDaoImpl : CommonDao, IdentificadorUnicoDaoInterface

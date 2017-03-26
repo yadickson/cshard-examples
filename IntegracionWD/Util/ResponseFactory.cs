@@ -48,6 +48,16 @@ namespace IntegracionWD.Util
             return response;
         }
 
+        public static RespuestaTransito CreateTransitoResponse(ListadoTransito listado, string codigoServicio)
+        {
+            RespuestaTransito response = new RespuestaTransito();
+            response.Codigo = Messages.CODIGO_ACEPTADO;
+            response.Mensaje = null;
+            response.CodigoServicio = null;
+            response.ListadoTransito = listado;
+            return response;
+        }
+
         public static RespuestaTransito CreateErrorTransitResponse(string message, string codigoServicio)
         {
             RespuestaTransito response = new RespuestaTransito();
