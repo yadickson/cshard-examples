@@ -10,7 +10,7 @@ using Moq;
 namespace CoreTest
 {
     [TestClass]
-    public class UnitTest1
+    public class PersonaTest
     {
         private PersonaInterface persona;
         private Mock<ValidarDataInterface<DataPersona>> validador;
