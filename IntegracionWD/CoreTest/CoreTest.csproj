@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C736FCA9-3CC9-4379-8ABC-D8565151733E}</ProjectGuid>
+    <ProjectGuid>{AE23ABC1-E1FD-46D8-AAF7-1B310B72DCFC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IntegracionWD.UtilTest</RootNamespace>
-    <AssemblyName>IntegracionWD.UtilTest</AssemblyName>
+    <RootNamespace>IntegracionWD.CoreTest</RootNamespace>
+    <AssemblyName>IntegracionWD.CoreTest</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,6 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.7.8\lib\net45\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -50,12 +56,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ValidadorAnioTest.cs" />
-    <Compile Include="ValidadorFechaTest.cs" />
-    <Compile Include="ValidadorModulo11Test.cs" />
-    <Compile Include="ValidadorPatenteTest.cs" />
-    <Compile Include="ValidadorRUTTest.cs" />
+    <Compile Include="PersonaTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Constants\Constants.csproj">
@@ -66,6 +71,10 @@
       <Project>{1b6c9fb6-5934-4389-84ea-477118896d58}</Project>
       <Name>Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataBase\DataBase.csproj">
+      <Project>{639a879e-b573-4fff-b713-15a8319b7d7f}</Project>
+      <Name>DataBase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{d6385039-0f68-4513-ab82-e1929d8310fe}</Project>
       <Name>Domain</Name>
@@ -74,21 +83,6 @@
       <Project>{5816b9bf-dee1-4eeb-a920-3da28a6894d8}</Project>
       <Name>Exception</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DataBase\DataBase.csproj">
-      <Project>{639a879e-b573-4fff-b713-15a8319b7d7f}</Project>
-      <Name>DataBase</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Service\Service.csproj">
-      <Project>{fd3b10fe-d1c1-4c97-ada5-143ca954be42}</Project>
-      <Name>Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Util\Util.csproj">
-      <Project>{a34aac63-fdf3-46f2-8fd7-8e42d515b8be}</Project>
-      <Name>Util</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
