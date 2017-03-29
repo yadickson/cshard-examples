@@ -26,6 +26,7 @@ namespace IntegracionWD.CoreTest
         {
 
         }
+
         [TestMethod]
         [ExpectedException(typeof(BusinessException))]
         public void TestValidadorFalla()
@@ -34,6 +35,16 @@ namespace IntegracionWD.CoreTest
             string oiden;
 
             validadorIdentificador.Setup(v => v.Validar(It.IsAny<string>(), It.IsAny<string>(), out otipo, out oiden)).Throws(new BusinessException("Validador error", "0001"));
+            validador.Validar(new DataIdentificador());
+        }
+
+        [TestMethod]
+        public void TestValidadorCorrecto()
+        {
+            string otipo;
+            string oiden;
+
+            validadorIdentificador.Setup(v => v.Validar(It.IsAny<string>(), It.IsAny<string>(), out otipo, out oiden)).Verifiable();
             validador.Validar(new DataIdentificador());
         }
     }
