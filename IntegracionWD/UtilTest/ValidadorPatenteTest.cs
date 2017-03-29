@@ -4,7 +4,7 @@ using IntegracionWD.Util;
 using IntegracionWD.Exception;
 using IntegracionWD.Constants;
 
-namespace IntegracionWD.UnitTest
+namespace IntegracionWD.UtilTest
 {
     [TestClass]
     public class ValidadorPatenteTest

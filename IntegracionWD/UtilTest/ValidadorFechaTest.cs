@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using IntegracionWD.Util;
 
-namespace IntegracionWD.UnitTest
+namespace IntegracionWD.UtilTest
 {
     [TestClass]
     public class ValidadorFechaTest

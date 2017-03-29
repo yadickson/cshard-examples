@@ -6,8 +6,8 @@
     <ProjectGuid>{C736FCA9-3CC9-4379-8ABC-D8565151733E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IntegracionWD.UnitTest</RootNamespace>
-    <AssemblyName>IntegracionWD.UnitTest</AssemblyName>
+    <RootNamespace>IntegracionWD.UtilTest</RootNamespace>
+    <AssemblyName>IntegracionWD.UtilTest</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -86,9 +86,6 @@
       <Project>{a34aac63-fdf3-46f2-8fd7-8e42d515b8be}</Project>
       <Name>Util</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
