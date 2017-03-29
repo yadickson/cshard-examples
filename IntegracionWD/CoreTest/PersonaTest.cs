@@ -7,7 +7,7 @@ using IntegracionWD.DataBase;
 using IntegracionWD.Constants;
 using Moq;
 
-namespace CoreTest
+namespace IntegracionWD.CoreTest
 {
     [TestClass]
     public class PersonaTest
