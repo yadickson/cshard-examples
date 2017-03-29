@@ -47,12 +47,7 @@
     <Compile Include="RespuestaTransito.cs" />
     <Compile Include="Respuesta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{9df95b03-80e6-499c-9a23-74a78a64bf8f}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
+    <Compile Include="Transito.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

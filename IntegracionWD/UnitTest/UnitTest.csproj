@@ -74,10 +74,6 @@
       <Project>{5816b9bf-dee1-4eeb-a920-3da28a6894d8}</Project>
       <Name>Exception</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{9df95b03-80e6-499c-9a23-74a78a64bf8f}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DataBase\DataBase.csproj">
       <Project>{639a879e-b573-4fff-b713-15a8319b7d7f}</Project>
       <Name>DataBase</Name>

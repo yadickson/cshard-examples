@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using IntegracionWD.Constants;
 using IntegracionWD.Domain;
-using IntegracionWD.Model;
 using IntegracionWD.Exception;
 using IntegracionWD.Util;
 using System.Data.SqlClient;

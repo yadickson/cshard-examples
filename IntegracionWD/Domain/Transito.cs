@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IntegracionWD.Model
+namespace IntegracionWD.Domain
 {
     [Serializable]
     public class Transito

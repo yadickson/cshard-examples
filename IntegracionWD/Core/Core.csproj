@@ -90,10 +90,6 @@
       <Project>{ce4f5f74-a95b-4a5a-be42-072d969905bd}</Project>
       <Name>Constants</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{9df95b03-80e6-499c-9a23-74a78a64bf8f}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Util\Util.csproj">
       <Project>{a34aac63-fdf3-46f2-8fd7-8e42d515b8be}</Project>
       <Name>Util</Name>
