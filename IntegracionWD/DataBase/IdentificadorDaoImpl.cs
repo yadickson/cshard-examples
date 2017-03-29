@@ -12,14 +12,16 @@ using System.Data;
 
 namespace IntegracionWD.DataBase
 {
-    public class IdentificadorUnicoDaoImpl : CommonDao, IdentificadorUnicoDaoInterface
+    public class IdentificadorDaoImpl : CommonDao, IdentificadorDaoInterface
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(IdentificadorUnicoDaoImpl));
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(IdentificadorDaoImpl));
 
+        private string storeProcedureName;
         private DataSourceInterface dataSource;
 
-        public IdentificadorUnicoDaoImpl(DataSourceInterface dataSource)
+        public IdentificadorDaoImpl(string storeProcedureName, DataSourceInterface dataSource)
         {
+            this.storeProcedureName = storeProcedureName;
             this.dataSource = dataSource;
         }
 
@@ -32,7 +34,7 @@ namespace IntegracionWD.DataBase
             try
             {
                 SqlConnection conn = dataSource.getConnection();
-                SqlCommand cmd = new SqlCommand(Business.SP_IDENTIFICADOR, conn);
+                SqlCommand cmd = new SqlCommand(storeProcedureName, conn);
 
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@Identificador", SqlDbType.VarChar).Value = data.Identificador;

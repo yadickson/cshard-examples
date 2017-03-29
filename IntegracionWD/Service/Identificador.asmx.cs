@@ -17,12 +17,12 @@ namespace IntegracionWD.Service
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Identificador));
 
-        private IdentificadorUnicoInterface identificadorUnico;
+        private IdentificadorInterface identificadorUnico;
 
         public Identificador()
         {
             IApplicationContext applicationContext = ContextRegistry.GetContext();
-            this.identificadorUnico = (IdentificadorUnicoInterface)applicationContext["identificador"];
+            this.identificadorUnico = (IdentificadorInterface)applicationContext["identificador"];
         }
 
         [WebMethod(Description = "Metodo para obtener identificador unico")]

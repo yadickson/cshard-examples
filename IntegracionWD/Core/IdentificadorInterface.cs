@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using IntegracionWD.Domain;
 
-namespace IntegracionWD.DataBase
+namespace IntegracionWD.Core
 {
-    public interface IdentificadorUnicoDaoInterface
+    public interface IdentificadorInterface
     {
         RespuestaIdentificador ObtenerIdentificadorUnico(DataIdentificador data);
     }

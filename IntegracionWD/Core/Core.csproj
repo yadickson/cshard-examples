@@ -63,8 +63,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IdentificadorUnicoImpl.cs" />
-    <Compile Include="IdentificadorUnicoInterface.cs" />
+    <Compile Include="IdentificadorImpl.cs" />
+    <Compile Include="IdentificadorInterface.cs" />
     <Compile Include="PersonaImpl.cs" />
     <Compile Include="PersonaInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

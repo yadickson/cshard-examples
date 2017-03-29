@@ -16,10 +16,12 @@ namespace IntegracionWD.DataBase
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(PersonaDaoImpl));
 
+        private string storeProcedureName;
         private DataSourceInterface dataSource;
 
-        public PersonaDaoImpl(DataSourceInterface dataSource)
+        public PersonaDaoImpl(string storeProcedureName, DataSourceInterface dataSource)
         {
+            this.storeProcedureName = storeProcedureName;
             this.dataSource = dataSource;
         }
 
@@ -30,7 +32,7 @@ namespace IntegracionWD.DataBase
             try
             {
                 SqlConnection conn = dataSource.getConnection();
-                SqlCommand cmd = new SqlCommand(Business.SP_PERSONAS, conn);
+                SqlCommand cmd = new SqlCommand(storeProcedureName, conn);
 
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@Nombre", SqlDbType.NVarChar).Value = data.Nombre;

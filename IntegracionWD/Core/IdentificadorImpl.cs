@@ -12,16 +12,16 @@ using IntegracionWD.DataBase;
 namespace IntegracionWD.Core
 {
 
-    public class IdentificadorUnicoImpl : IdentificadorUnicoInterface
+    public class IdentificadorImpl : IdentificadorInterface
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(IdentificadorUnicoImpl));
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(IdentificadorImpl));
 
         private LoggerDaoInterface loggerDao;
-        private IdentificadorUnicoDaoInterface identificadorUnicoDao;
+        private IdentificadorDaoInterface identificadorDao;
 
-        public IdentificadorUnicoImpl(IdentificadorUnicoDaoInterface identificadorUnicoDao, LoggerDaoInterface loggerDao)
+        public IdentificadorImpl(IdentificadorDaoInterface identificadorDao, LoggerDaoInterface loggerDao)
         {
-            this.identificadorUnicoDao = identificadorUnicoDao;
+            this.identificadorDao = identificadorDao;
             this.loggerDao = loggerDao;
         }
 
@@ -39,7 +39,7 @@ namespace IntegracionWD.Core
                 data.Tipo = otipo;
                 data.Identificador = odata;
 
-                return identificadorUnicoDao.ObtenerIdentificadorUnico(data);
+                return identificadorDao.ObtenerIdentificadorUnico(data);
             }
             catch (BusinessException ex)
             {
