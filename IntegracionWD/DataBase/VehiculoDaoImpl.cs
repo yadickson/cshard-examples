@@ -32,7 +32,7 @@ namespace IntegracionWD.DataBase
             try
             {
                 SqlConnection conn = dataSource.getConnection();
-                SqlCommand cmd = new SqlCommand(storeProcedureName, conn);
+                SqlCommand cmd = dataSource.getCommand(storeProcedureName, conn);
 
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@Patente", SqlDbType.VarChar).Value = data.Patente;

@@ -10,5 +10,7 @@ namespace IntegracionWD.DataBase
     public interface DataSourceInterface
     {
         SqlConnection getConnection();
+
+        SqlCommand getCommand(string storeProcedureName, SqlConnection conn);
     }
 }

@@ -23,5 +23,10 @@ namespace IntegracionWD.DataBase
         {
             return new SqlConnection(connectionString);
         }
+
+        public SqlCommand getCommand(string storeProcedureName, SqlConnection conn)
+        {
+            return new SqlCommand(storeProcedureName, conn);
+        }
     }
 }
