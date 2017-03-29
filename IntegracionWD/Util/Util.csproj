@@ -50,7 +50,8 @@
     <Compile Include="ValidadorFechaHasta.cs" />
     <Compile Include="ValidadorFechaDesde.cs" />
     <Compile Include="ValidadorFechaExpiracionVehiculo.cs" />
-    <Compile Include="ValidadorTipoIdentificador.cs" />
+    <Compile Include="ValidadorTipoIdentificadorInterface.cs" />
+    <Compile Include="ValidadorTipoIdentificadorImpl.cs" />
     <Compile Include="ValidadorTipo.cs" />
     <Compile Include="ValidadorModelo.cs" />
     <Compile Include="ValidadorMotivoRechazoLicencia.cs" />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IntegracionWD.Core
 {
-    public interface ValidarDataInterface<T>
+    public interface ValidadorDataInterface<T>
     {
         T Validar(T data);
     }

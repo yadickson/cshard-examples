@@ -14,14 +14,14 @@ namespace IntegracionWD.CoreTest
     public class IdentificadorTest
     {
         private IdentificadorInterface identificador;
-        private Mock<ValidarDataInterface<DataIdentificador>> validador;
+        private Mock<ValidadorDataInterface<DataIdentificador>> validador;
         private Mock<LoggerDaoInterface> loggerDao;
         private Mock<IdentificadorDaoInterface> identificadorDao;
 
         [TestInitialize()]
         public void Initialize()
         {
-            validador = new Mock<ValidarDataInterface<DataIdentificador>>();
+            validador = new Mock<ValidadorDataInterface<DataIdentificador>>();
             loggerDao = new Mock<LoggerDaoInterface>();
             identificadorDao = new Mock<IdentificadorDaoInterface>();
             identificador = new IdentificadorImpl(validador.Object, identificadorDao.Object, loggerDao.Object);

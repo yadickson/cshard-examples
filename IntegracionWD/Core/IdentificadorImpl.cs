@@ -16,11 +16,11 @@ namespace IntegracionWD.Core
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(IdentificadorImpl));
 
-        private ValidarDataInterface<DataIdentificador> validador;
+        private ValidadorDataInterface<DataIdentificador> validador;
         private LoggerDaoInterface loggerDao;
         private IdentificadorDaoInterface identificadorDao;
 
-        public IdentificadorImpl(ValidarDataInterface<DataIdentificador> validador, IdentificadorDaoInterface identificadorDao, LoggerDaoInterface loggerDao)
+        public IdentificadorImpl(ValidadorDataInterface<DataIdentificador> validador, IdentificadorDaoInterface identificadorDao, LoggerDaoInterface loggerDao)
         {
             this.validador = validador;
             this.identificadorDao = identificadorDao;

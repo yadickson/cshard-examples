@@ -8,8 +8,15 @@ using IntegracionWD.Util;
 
 namespace IntegracionWD.Core
 {
-    public class ValidadorDataIdentificadorImpl : ValidarDataInterface<DataIdentificador>
+    public class ValidadorDataIdentificadorImpl : ValidadorDataInterface<DataIdentificador>
     {
+        private ValidadorTipoIdentificadorInterface validador;
+
+        public ValidadorDataIdentificadorImpl(ValidadorTipoIdentificadorInterface validador)
+        {
+            this.validador = validador;
+        }
+
         public DataIdentificador Validar(DataIdentificador data)
         {
             DataIdentificador output = new DataIdentificador();
@@ -17,7 +24,7 @@ namespace IntegracionWD.Core
             string otipo;
             string odata;
 
-            new ValidadorTipoIdentificador().Validar(data.Tipo, data.Identificador, out otipo, out odata);
+            validador.Validar(data.Tipo, data.Identificador, out otipo, out odata);
 
             output.Tipo = otipo;
             output.Identificador = odata;

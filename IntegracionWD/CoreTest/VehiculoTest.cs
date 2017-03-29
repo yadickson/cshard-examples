@@ -13,14 +13,14 @@ namespace IntegracionWD.CoreTest
     public class VehiculoTest
     {
         private VehiculoInterface vehiculo;
-        private Mock<ValidarDataInterface<DataVehiculo>> validador;
+        private Mock<ValidadorDataInterface<DataVehiculo>> validador;
         private Mock<LoggerDaoInterface> loggerDao;
         private Mock<VehiculoDaoInterface> vehiculoDao;
 
         [TestInitialize()]
         public void Initialize()
         {
-            validador = new Mock<ValidarDataInterface<DataVehiculo>>();
+            validador = new Mock<ValidadorDataInterface<DataVehiculo>>();
             loggerDao = new Mock<LoggerDaoInterface>();
             vehiculoDao = new Mock<VehiculoDaoInterface>();
             vehiculo = new VehiculoImpl(validador.Object, vehiculoDao.Object, loggerDao.Object);

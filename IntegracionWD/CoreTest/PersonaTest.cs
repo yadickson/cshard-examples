@@ -13,14 +13,14 @@ namespace IntegracionWD.CoreTest
     public class PersonaTest
     {
         private PersonaInterface persona;
-        private Mock<ValidarDataInterface<DataPersona>> validador;
+        private Mock<ValidadorDataInterface<DataPersona>> validador;
         private Mock<LoggerDaoInterface> loggerDao;
         private Mock<PersonaDaoInterface> personaDao;
 
         [TestInitialize()]
         public void Initialize()
         {
-            validador = new Mock<ValidarDataInterface<DataPersona>>();
+            validador = new Mock<ValidadorDataInterface<DataPersona>>();
             loggerDao = new Mock<LoggerDaoInterface>();
             personaDao = new Mock<PersonaDaoInterface>();
             persona = new PersonaImpl(validador.Object, personaDao.Object, loggerDao.Object);

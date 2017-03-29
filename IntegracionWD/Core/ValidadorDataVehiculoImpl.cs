@@ -8,7 +8,7 @@ using IntegracionWD.Util;
 
 namespace IntegracionWD.Core
 {
-    public class ValidadorDataVehiculoImpl : ValidarDataInterface<DataVehiculo>
+    public class ValidadorDataVehiculoImpl : ValidadorDataInterface<DataVehiculo>
     {
         public DataVehiculo Validar(DataVehiculo data)
         {

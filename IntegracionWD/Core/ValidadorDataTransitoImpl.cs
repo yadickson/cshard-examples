@@ -10,7 +10,7 @@ using IntegracionWD.Constants;
 
 namespace IntegracionWD.Core
 {
-    public class ValidadorDataTransitoImpl : ValidarDataInterface<DataTransito>
+    public class ValidadorDataTransitoImpl : ValidadorDataInterface<DataTransito>
     {
         public DataTransito Validar(DataTransito data)
         {
@@ -34,7 +34,7 @@ namespace IntegracionWD.Core
                 string otipo;
                 string odata;
 
-                new ValidadorTipoIdentificador().Validar(data.Tipo, data.Identificador, out otipo, out odata);
+                new ValidadorTipoIdentificadorImpl().Validar(data.Tipo, data.Identificador, out otipo, out odata);
 
                 output.Tipo = otipo;
                 output.Identificador = odata;

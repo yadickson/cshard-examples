@@ -15,11 +15,11 @@ namespace IntegracionWD.Core
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(PersonaImpl));
 
-        private ValidarDataInterface<DataPersona> validador;
+        private ValidadorDataInterface<DataPersona> validador;
         private LoggerDaoInterface loggerDao;
         private PersonaDaoInterface personaDao;
 
-        public PersonaImpl(ValidarDataInterface<DataPersona> validador, PersonaDaoInterface personaDao, LoggerDaoInterface loggerDao)
+        public PersonaImpl(ValidadorDataInterface<DataPersona> validador, PersonaDaoInterface personaDao, LoggerDaoInterface loggerDao)
         {
             this.validador = validador;
             this.personaDao = personaDao;

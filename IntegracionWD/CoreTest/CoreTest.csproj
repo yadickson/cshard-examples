@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="IdentificadorTest.cs" />
     <Compile Include="TransitoTest.cs" />
+    <Compile Include="ValidadorDataIdentificadorTest.cs" />
     <Compile Include="VehiculoTest.cs" />
     <Compile Include="PersonaTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,6 +86,10 @@
     <ProjectReference Include="..\Exception\Exception.csproj">
       <Project>{5816b9bf-dee1-4eeb-a920-3da28a6894d8}</Project>
       <Name>Exception</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{a34aac63-fdf3-46f2-8fd7-8e42d515b8be}</Project>
+      <Name>Util</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

@@ -15,11 +15,11 @@ namespace IntegracionWD.Core
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(VehiculoImpl));
 
-        private ValidarDataInterface<DataVehiculo> validador;
+        private ValidadorDataInterface<DataVehiculo> validador;
         private LoggerDaoInterface loggerDao;
         private VehiculoDaoInterface vehiculoDao;
 
-        public VehiculoImpl(ValidarDataInterface<DataVehiculo> validador, VehiculoDaoInterface vehiculoDao, LoggerDaoInterface loggerDao)
+        public VehiculoImpl(ValidadorDataInterface<DataVehiculo> validador, VehiculoDaoInterface vehiculoDao, LoggerDaoInterface loggerDao)
         {
             this.validador = validador;
             this.vehiculoDao = vehiculoDao;

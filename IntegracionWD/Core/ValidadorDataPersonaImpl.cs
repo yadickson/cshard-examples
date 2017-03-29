@@ -8,7 +8,7 @@ using IntegracionWD.Util;
 
 namespace IntegracionWD.Core
 {
-    public class ValidadorDataPersonaImpl : ValidarDataInterface<DataPersona>
+    public class ValidadorDataPersonaImpl : ValidadorDataInterface<DataPersona>
     {
         public DataPersona Validar(DataPersona data)
         {

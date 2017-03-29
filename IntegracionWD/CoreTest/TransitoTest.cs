@@ -14,14 +14,14 @@ namespace IntegracionWD.CoreTest
     public class TransitoTest
     {
         private TransitoInterface transito;
-        private Mock<ValidarDataInterface<DataTransito>> validador;
+        private Mock<ValidadorDataInterface<DataTransito>> validador;
         private Mock<LoggerDaoInterface> loggerDao;
         private Mock<TransitoDaoInterface> transitoDao;
 
         [TestInitialize()]
         public void Initialize()
         {
-            validador = new Mock<ValidarDataInterface<DataTransito>>();
+            validador = new Mock<ValidadorDataInterface<DataTransito>>();
             loggerDao = new Mock<LoggerDaoInterface>();
             transitoDao = new Mock<TransitoDaoInterface>();
             transito = new TransitoImpl(validador.Object, transitoDao.Object, loggerDao.Object);
