@@ -15,11 +15,13 @@ namespace IntegracionWD.Core
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(VehiculoImpl));
 
+        private LoggerDaoInterface loggerDao;
         private VehiculoDaoInterface vehiculoDao;
 
-        public VehiculoImpl(VehiculoDaoInterface vehiculoDao)
+        public VehiculoImpl(VehiculoDaoInterface vehiculoDao, LoggerDaoInterface loggerDao)
         {
             this.vehiculoDao = vehiculoDao;
+            this.loggerDao = loggerDao;
         }
 
         public Respuesta AgregarVehiculo(DataVehiculo data)
@@ -43,7 +45,7 @@ namespace IntegracionWD.Core
             catch (BusinessException ex)
             {
                 log.Error("Error al agregar vehiculo", ex);
-                DataBaseFactory.createLoggerVehiculoDao().Agregar(ex.Message, Business.SERVICIO_VEHICULOS + ex.Code);
+                loggerDao.Agregar(ex.Message, Business.SERVICIO_VEHICULOS + ex.Code);
                 return ResponseFactory.CreateErrorResponse(ex.Message, Business.SERVICIO_VEHICULOS + ex.Code);
             }
         }

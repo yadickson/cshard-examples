@@ -16,11 +16,13 @@ namespace IntegracionWD.Core
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(IdentificadorUnicoImpl));
 
+        private LoggerDaoInterface loggerDao;
         private IdentificadorUnicoDaoInterface identificadorUnicoDao;
 
-        public IdentificadorUnicoImpl(IdentificadorUnicoDaoInterface identificadorUnicoDao)
+        public IdentificadorUnicoImpl(IdentificadorUnicoDaoInterface identificadorUnicoDao, LoggerDaoInterface loggerDao)
         {
             this.identificadorUnicoDao = identificadorUnicoDao;
+            this.loggerDao = loggerDao;
         }
 
         public RespuestaIdentificador ObtenerIdentificadorUnico(DataIdentificador data)
@@ -42,7 +44,7 @@ namespace IntegracionWD.Core
             catch (BusinessException ex)
             {
                 log.Error("Error al consultar identificador unico", ex);
-                DataBaseFactory.createLoggerIdentificadorDao().Agregar(ex.Message, Business.SERVICIO_IDENTIFICADOR + ex.Code);
+                loggerDao.Agregar(ex.Message, Business.SERVICIO_IDENTIFICADOR + ex.Code);
                 return ResponseFactory.CreateErrorIdentifyResponse(ex.Message, Business.SERVICIO_IDENTIFICADOR + ex.Code);
             }
         }

@@ -15,11 +15,13 @@ namespace IntegracionWD.Core
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(TransitoImpl));
 
+        private LoggerDaoInterface loggerDao;
         private TransitoDaoInterface transitoDao;
 
-        public TransitoImpl(TransitoDaoInterface transitoDao)
+        public TransitoImpl(TransitoDaoInterface transitoDao, LoggerDaoInterface loggerDao)
         {
             this.transitoDao = transitoDao;
+            this.loggerDao = loggerDao;
         }
 
         public RespuestaTransito ObtenerListadoTransito(DataTransito data)
@@ -57,7 +59,7 @@ namespace IntegracionWD.Core
             catch (BusinessException ex)
             {
                 log.Error("Error al consultar transito", ex);
-                DataBaseFactory.createLoggerTransitoDao().Agregar(ex.Message, Business.SERVICIO_TRANSITO + ex.Code);
+                loggerDao.Agregar(ex.Message, Business.SERVICIO_TRANSITO + ex.Code);
                 return ResponseFactory.CreateErrorTransitResponse(ex.Message, Business.SERVICIO_TRANSITO + ex.Code);
             }
         }

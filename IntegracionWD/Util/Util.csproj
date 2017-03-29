@@ -72,7 +72,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidadorRUT.cs" />
     <Compile Include="ValidadorTarjeta.cs" />
-    <Compile Include="Properties.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

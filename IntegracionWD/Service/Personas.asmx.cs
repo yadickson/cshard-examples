@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Services;
 using IntegracionWD.Domain;
 using IntegracionWD.Core;
+using Spring.Context;
+using Spring.Context.Support;
 
 namespace IntegracionWD.Service
 {
@@ -14,12 +16,13 @@ namespace IntegracionWD.Service
     public class Personas : System.Web.Services.WebService
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Personas));
-        
-        private PersonaInterface persona = CoreFactory.createPersona();
 
-        public void SetPersona(PersonaInterface persona)
+        private PersonaInterface persona;
+        
+        public Personas()
         {
-            this.persona = persona;
+            IApplicationContext applicationContext = ContextRegistry.GetContext();
+            this.persona = (PersonaInterface)applicationContext["persona"];
         }
 
         [WebMethod(Description = "Metodo para agregar personas")]

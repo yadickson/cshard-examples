@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Services;
 using IntegracionWD.Domain;
 using IntegracionWD.Core;
+using Spring.Context;
+using Spring.Context.Support;
 
 namespace IntegracionWD.Service
 {
@@ -15,11 +17,12 @@ namespace IntegracionWD.Service
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Vehiculos));
 
-        private VehiculoInterface vehiculo = CoreFactory.createVehiculo();
+        private VehiculoInterface vehiculo;
 
-        public void SetVehiculo(VehiculoInterface vehiculo)
+        public Vehiculos()
         {
-            this.vehiculo = vehiculo;
+            IApplicationContext applicationContext = ContextRegistry.GetContext();
+            this.vehiculo = (VehiculoInterface)applicationContext["vehiculo"];
         }
 
         [WebMethod(Description = "Metodo para agregar vehiculo")]

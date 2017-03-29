@@ -15,11 +15,13 @@ namespace IntegracionWD.Core
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(PersonaImpl));
 
+        private LoggerDaoInterface loggerDao;
         private PersonaDaoInterface personaDao;
 
-        public PersonaImpl(PersonaDaoInterface personaDao)
+        public PersonaImpl(PersonaDaoInterface personaDao, LoggerDaoInterface loggerDao)
         {
             this.personaDao = personaDao;
+            this.loggerDao = loggerDao;
         }
 
         public Respuesta AgregarPersona(DataPersona data)
@@ -45,7 +47,7 @@ namespace IntegracionWD.Core
             catch (BusinessException ex)
             {
                 log.Error("Error al agregar persona", ex);
-                DataBaseFactory.createLoggerPersonaDao().Agregar(ex.Message, Business.SERVICIO_PERSONAS + ex.Code);
+                loggerDao.Agregar(ex.Message, Business.SERVICIO_PERSONAS + ex.Code);
                 return ResponseFactory.CreateErrorResponse(ex.Message, Business.SERVICIO_PERSONAS + ex.Code);
             }
         }
