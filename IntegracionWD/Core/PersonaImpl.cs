@@ -15,11 +15,13 @@ namespace IntegracionWD.Core
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(PersonaImpl));
 
+        private ValidarDataInterface<DataPersona> validador;
         private LoggerDaoInterface loggerDao;
         private PersonaDaoInterface personaDao;
 
-        public PersonaImpl(PersonaDaoInterface personaDao, LoggerDaoInterface loggerDao)
+        public PersonaImpl(ValidarDataInterface<DataPersona> validador, PersonaDaoInterface personaDao, LoggerDaoInterface loggerDao)
         {
+            this.validador = validador;
             this.personaDao = personaDao;
             this.loggerDao = loggerDao;
         }
@@ -30,19 +32,7 @@ namespace IntegracionWD.Core
 
             try
             {
-                data.Nombre = new ValidadorNombre().Validar(data.Nombre);
-                data.Apellido = new ValidadorApellido().Validar(data.Apellido);
-                data.RUT = new ValidadorRUT().Validar(data.RUT);
-                data.Tarjeta = new ValidadorTarjeta().Validar(data.Tarjeta);
-                data.TipoPase = new ValidadorTipoPase().Validar(data.TipoPase);
-                data.Contrato = new ValidadorContrato().Validar(data.Contrato);
-                data.RazonSocial = new ValidadorRazonSocial().Validar(data.RazonSocial);
-                data.FechaExpiracionTrabajador = new ValidadorFechaExpiracionTrabajador().Validar(data.FechaExpiracionTrabajador);
-                data.MotivoRechazoTrabajor = new ValidadorMotivoRechazoTrabajor().Validar(data.MotivoRechazoTrabajor);
-                data.FechaExpiracionLicencia = new ValidadorFechaExpiracionTrabajador().Validar(data.FechaExpiracionLicencia);
-                data.MotivoRechazoLicencia = new ValidadorMotivoRechazoLicencia().Validar(data.MotivoRechazoLicencia);
-
-                return personaDao.AgregarPersona(data);
+                return personaDao.AgregarPersona(validador.Validar(data));
             }
             catch (BusinessException ex)
             {

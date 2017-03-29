@@ -15,11 +15,13 @@ namespace IntegracionWD.Core
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(TransitoImpl));
 
+        private ValidarDataInterface<DataTransito> validador;
         private LoggerDaoInterface loggerDao;
         private TransitoDaoInterface transitoDao;
 
-        public TransitoImpl(TransitoDaoInterface transitoDao, LoggerDaoInterface loggerDao)
+        public TransitoImpl(ValidarDataInterface<DataTransito> validador, TransitoDaoInterface transitoDao, LoggerDaoInterface loggerDao)
         {
+            this.validador = validador;
             this.transitoDao = transitoDao;
             this.loggerDao = loggerDao;
         }
@@ -30,31 +32,7 @@ namespace IntegracionWD.Core
 
             try
             {
-                data.FechaDesde = new ValidadorFechaDesde().Validar(data.FechaDesde);
-                data.FechaHasta = new ValidadorFechaHasta().Validar(data.FechaHasta);
-
-                if (data.FechaDesde.CompareTo(data.FechaHasta) <= 0)
-                {
-                    data.FechaDesde = new ValidadorFechaDesde().Validar(data.FechaDesde);
-                    data.FechaHasta = new ValidadorFechaHasta().Validar(data.FechaHasta);
-                }
-                else
-                {
-                    throw new BusinessException("Fecha desde mayor a fecha hasta [FechaDesde:" + data.FechaDesde + "][FechaHasta:" + data.FechaHasta + "]", Errors.FECHA_DESDE_MENOR);
-                }
-
-                if (data.Tipo != null || data.Identificador != null)
-                {
-                    string otipo;
-                    string odata;
-
-                    new ValidadorTipoIdentificador().Validar(data.Tipo, data.Identificador, out otipo, out odata);
-
-                    data.Tipo = otipo;
-                    data.Identificador = odata;
-                }
-
-                return transitoDao.ObtenerListadoTransito(data);
+                return transitoDao.ObtenerListadoTransito(validador.Validar(data));
             }
             catch (BusinessException ex)
             {

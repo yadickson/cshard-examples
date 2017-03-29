@@ -16,11 +16,13 @@ namespace IntegracionWD.Core
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(IdentificadorImpl));
 
+        private ValidarDataInterface<DataIdentificador> validador;
         private LoggerDaoInterface loggerDao;
         private IdentificadorDaoInterface identificadorDao;
 
-        public IdentificadorImpl(IdentificadorDaoInterface identificadorDao, LoggerDaoInterface loggerDao)
+        public IdentificadorImpl(ValidarDataInterface<DataIdentificador> validador, IdentificadorDaoInterface identificadorDao, LoggerDaoInterface loggerDao)
         {
+            this.validador = validador;
             this.identificadorDao = identificadorDao;
             this.loggerDao = loggerDao;
         }
@@ -31,15 +33,7 @@ namespace IntegracionWD.Core
 
             try
             {
-                string otipo;
-                string odata;
-
-                new ValidadorTipoIdentificador().Validar(data.Tipo, data.Identificador, out otipo, out odata);
-
-                data.Tipo = otipo;
-                data.Identificador = odata;
-
-                return identificadorDao.ObtenerIdentificadorUnico(data);
+                return identificadorDao.ObtenerIdentificadorUnico(validador.Validar(data));
             }
             catch (BusinessException ex)
             {

@@ -15,11 +15,13 @@ namespace IntegracionWD.Core
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(VehiculoImpl));
 
+        private ValidarDataInterface<DataVehiculo> validador;
         private LoggerDaoInterface loggerDao;
         private VehiculoDaoInterface vehiculoDao;
 
-        public VehiculoImpl(VehiculoDaoInterface vehiculoDao, LoggerDaoInterface loggerDao)
+        public VehiculoImpl(ValidarDataInterface<DataVehiculo> validador, VehiculoDaoInterface vehiculoDao, LoggerDaoInterface loggerDao)
         {
+            this.validador = validador;
             this.vehiculoDao = vehiculoDao;
             this.loggerDao = loggerDao;
         }
@@ -30,17 +32,7 @@ namespace IntegracionWD.Core
 
             try
             {
-                data.Patente = new ValidadorPatente().Validar(data.Patente);
-                data.Marca = new ValidadorMarca().Validar(data.Marca);
-                data.Modelo = new ValidadorModelo().Validar(data.Modelo);
-                data.Anio = new ValidadorAnioVehiculo().Validar(data.Anio);
-                data.TipoVehiculo = new ValidadorTipoVehiculo().Validar(data.TipoVehiculo);
-                data.Contrato = new ValidadorContrato().Validar(data.Contrato);
-                data.RazonSocial = new ValidadorRazonSocial().Validar(data.RazonSocial);
-                data.FechaExpiracion = new ValidadorFechaExpiracionVehiculo().Validar(data.FechaExpiracion);
-                data.MotivoRechazo = new ValidadorMotivoRechazoVehiculo().Validar(data.MotivoRechazo);
-
-                return vehiculoDao.AgregarVehiculo(data);
+                return vehiculoDao.AgregarVehiculo(validador.Validar(data));
             }
             catch (BusinessException ex)
             {

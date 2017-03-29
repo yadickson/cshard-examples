@@ -70,6 +70,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransitoImpl.cs" />
     <Compile Include="TransitoInterface.cs" />
+    <Compile Include="ValidadorDataIdentificadorImpl.cs" />
+    <Compile Include="ValidadorDataTransitoImpl.cs" />
+    <Compile Include="ValidadorDataVehiculoImpl.cs" />
+    <Compile Include="ValidadorDataInterface.cs" />
+    <Compile Include="ValidadorDataPersonaImpl.cs" />
     <Compile Include="VehiculoImpl.cs" />
     <Compile Include="VehiculoInterface.cs" />
   </ItemGroup>
