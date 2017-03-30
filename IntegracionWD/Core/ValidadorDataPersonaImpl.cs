@@ -23,7 +23,7 @@ namespace IntegracionWD.Core
             output.RazonSocial = new ValidadorRazonSocial().Validar(data.RazonSocial);
             output.FechaExpiracionTrabajador = new ValidadorFechaExpiracionTrabajador().Validar(data.FechaExpiracionTrabajador);
             output.MotivoRechazoTrabajor = new ValidadorMotivoRechazoTrabajor().Validar(data.MotivoRechazoTrabajor);
-            output.FechaExpiracionLicencia = new ValidadorFechaExpiracionTrabajador().Validar(data.FechaExpiracionLicencia);
+            output.FechaExpiracionLicencia = new ValidadorFechaExpiracionLicencia().Validar(data.FechaExpiracionLicencia);
             output.MotivoRechazoLicencia = new ValidadorMotivoRechazoLicencia().Validar(data.MotivoRechazoLicencia);
 
             return output;
