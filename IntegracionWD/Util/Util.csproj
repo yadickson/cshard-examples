@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A34AAC63-FDF3-46F2-8FD7-8E42D515B8BE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IntegracionWD.Util</RootNamespace>
+    <AssemblyName>IntegracionWD.Util</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ResponseFactory.cs" />
+    <Compile Include="ValidadorAnio.cs" />
+    <Compile Include="ValidadorAnioVehiculo.cs" />
+    <Compile Include="ValidadorFechaHasta.cs" />
+    <Compile Include="ValidadorFechaDesde.cs" />
+    <Compile Include="ValidadorFechaExpiracionVehiculo.cs" />
+    <Compile Include="ValidadorTipo.cs" />
+    <Compile Include="ValidadorModelo.cs" />
+    <Compile Include="ValidadorMotivoRechazoLicencia.cs" />
+    <Compile Include="ValidadorMotivoRechazoVehiculo.cs" />
+    <Compile Include="ValidadorMotivoRechazoTrabajor.cs" />
+    <Compile Include="ValidadorFechaExpiracionLicencia.cs" />
+    <Compile Include="ValidadorFechaExpiracionTrabajador.cs" />
+    <Compile Include="ValidadorFecha.cs" />
+    <Compile Include="ValidadorBase.cs" />
+    <Compile Include="ValidadorContrato.cs" />
+    <Compile Include="ValidadorMarca.cs" />
+    <Compile Include="ValidadorRazonSocial.cs" />
+    <Compile Include="ValidadorTipoVehiculo.cs" />
+    <Compile Include="ValidadorTipoPase.cs" />
+    <Compile Include="ValidadorModulo11.cs" />
+    <Compile Include="ValidadorApellido.cs" />
+    <Compile Include="ValidadorNombre.cs" />
+    <Compile Include="ValidadorPatente.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidadorRUT.cs" />
+    <Compile Include="ValidadorTarjeta.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{d6385039-0f68-4513-ab82-e1929d8310fe}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Exception\Exception.csproj">
+      <Project>{5816b9bf-dee1-4eeb-a920-3da28a6894d8}</Project>
+      <Name>Exception</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Constants\Constants.csproj">
+      <Project>{ce4f5f74-a95b-4a5a-be42-072d969905bd}</Project>
+      <Name>Constants</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
