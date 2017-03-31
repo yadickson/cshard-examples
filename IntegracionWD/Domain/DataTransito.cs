@@ -11,8 +11,7 @@ namespace IntegracionWD.Domain
     {
         private string fechaDesde;
         private string fechaHasta;
-        private string tipo; // persona(P)/vehiculo(V)
-        private string identificador; // RUT/Patente
+        private DataIdentificador tipoIdentificador;
 
         public string FechaDesde
         {
@@ -26,16 +25,10 @@ namespace IntegracionWD.Domain
             set { fechaHasta = value; }
         }
 
-        public string Tipo
+        public DataIdentificador TipoIdentificador
         {
-            get { return tipo; }
-            set { tipo = value; }
-        }
-
-        public string Identificador
-        {
-            get { return identificador; }
-            set { identificador = value; }
+            get { return tipoIdentificador; }
+            set { tipoIdentificador = value; }
         }
     }
 }

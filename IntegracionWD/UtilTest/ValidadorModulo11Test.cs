@@ -44,25 +44,25 @@ namespace IntegracionWD.UtilTest
         [TestMethod]
         public void TestValidar_DV_Incorrecto()
         {
-            Assert.IsFalse(validador.Validar("123456", "K"));
+            Assert.IsFalse(validador.Validar("123456K"));
         }
 
         [TestMethod]
         public void TestValidar_DV_Correcto()
         {
-            Assert.IsTrue(validador.Validar("123456", "0"));
+            Assert.IsTrue(validador.Validar("1234560"));
         }
 
         [TestMethod]
         public void TestValidar_DV_Correcto2()
         {
-            Assert.IsTrue(validador.Validar("121210", "9"));
+            Assert.IsTrue(validador.Validar("1212109"));
         }
 
         [TestMethod]
         public void TestValidar_DV_Correcto3()
         {
-            Assert.IsTrue(validador.Validar("121310", "5"));
+            Assert.IsTrue(validador.Validar("1213105"));
         }
 
     }

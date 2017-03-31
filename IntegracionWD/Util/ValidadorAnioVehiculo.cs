@@ -8,7 +8,7 @@ using IntegracionWD.Constants;
 
 namespace IntegracionWD.Util
 {
-    public class ValidadorAnioVehiculo : ValidadorBase
+    public class ValidadorAnioVehiculo : ValidadorBase, ValidadorInterface<string, string>
     {
         public string Validar(string input)
         {

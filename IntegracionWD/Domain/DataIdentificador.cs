@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace IntegracionWD.Domain
 {
-    [Serializable]
     public class DataIdentificador
     {
         private string tipo; // persona(P)/vehiculo(V)
@@ -17,11 +16,12 @@ namespace IntegracionWD.Domain
             get { return tipo; }
             set { tipo = value; }
         }
-        
+
         public string Identificador
         {
             get { return identificador; }
             set { identificador = value; }
         }
+
     }
 }

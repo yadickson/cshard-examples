@@ -3,132 +3,88 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using IntegracionWD.Util;
 using IntegracionWD.Exception;
 using IntegracionWD.Constants;
+using Moq;
 
 namespace IntegracionWD.UtilTest
 {
     [TestClass]
     public class ValidadorPatenteTest
     {
-        private ValidadorPatente validador = new ValidadorPatente();
+        private ValidadorPatente validador;
+        private Mock<ValidadorInterface<string, string>> validadorLongitud;
+        private Mock<ValidadorInterface<string, string>> validadorAntiguo;
+        private Mock<ValidadorInterface<string, string>> validadorActual;
 
-        [TestMethod]
-        [ExpectedException(typeof(BusinessException))]
-        public void TestInputNull()
+        [TestInitialize()]
+        public void Initialize()
         {
-            validador.Validar(null);
+            validadorLongitud = new Mock<ValidadorInterface<string, string>>();
+            validadorAntiguo = new Mock<ValidadorInterface<string, string>>();
+            validadorActual = new Mock<ValidadorInterface<string, string>>();
+            validador = new ValidadorPatente(validadorLongitud.Object, validadorAntiguo.Object, validadorActual.Object);
+        }
+
+        [TestCleanup()]
+        public void Cleanup()
+        {
+
         }
 
         [TestMethod]
         [ExpectedException(typeof(BusinessException))]
-        public void TestInputEmpty()
+        public void TestValidadorLongitudFalla()
         {
-            validador.Validar("");
+            validadorLongitud.Setup(v => v.Validar(It.IsAny<string>())).Throws(new BusinessException("Validador error", "0001"));
+
+            validador.Validar("placa");
         }
 
         [TestMethod]
         [ExpectedException(typeof(BusinessException))]
-        public void TestInputTrimEmpty()
+        public void TestPatenteAntiguaFalla()
         {
-            validador.Validar("     ");
+            validadorLongitud.Setup(v => v.Validar(It.IsAny<string>())).Returns("BB00001");
+            validadorAntiguo.Setup(v => v.Validar(It.IsAny<string>())).Throws(new BusinessException("Validador error", "0001"));
+
+            validador.Validar("BB00001");
         }
 
         [TestMethod]
         [ExpectedException(typeof(BusinessException))]
-        public void TestValidarPatenteError()
+        public void TestPatenteActualFalla()
         {
-            validador.Validar("AA8159-6");
+            validadorLongitud.Setup(v => v.Validar(It.IsAny<string>())).Returns("BBBB001");
+            validadorActual.Setup(v => v.Validar(It.IsAny<string>())).Throws(new BusinessException("Validador error", "0001"));
+
+            validador.Validar("BBBB001");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(BusinessException))]
-        public void TestValidarPatenteErrorCodigoPatenteAntigua()
+        public void TestPatenteAntiguaOk()
         {
-            validador.Validar("XX8159-6");
+            validadorLongitud.Setup(v => v.Validar(It.IsAny<string>())).Returns("BB00001");
+            validadorAntiguo.Setup(v => v.Validar(It.IsAny<string>())).Returns("123");
+
+            string expected = validador.Validar("BB00001");
+            Assert.AreEqual("123", expected);
+
+            validadorLongitud.Verify(v => v.Validar(It.IsAny<string>()), Times.Once());
+            validadorAntiguo.Verify(v => v.Validar(It.IsAny<string>()), Times.Once());
+            validadorActual.Verify(v => v.Validar(It.IsAny<string>()), Times.Never());
         }
 
         [TestMethod]
-        [ExpectedException(typeof(BusinessException))]
-        public void TestValidarPatenteErrorPatenteModerna()
+        public void TestPatenteActualOk()
         {
-            validador.Validar("XXOO59-6");
-        }
+            validadorLongitud.Setup(v => v.Validar(It.IsAny<string>())).Returns("BBBB001");
+            validadorActual.Setup(v => v.Validar(It.IsAny<string>())).Returns("321");
 
-        [TestMethod]
-        [ExpectedException(typeof(BusinessException))]
-        public void TestValidarPatenteErrorNumeric1()
-        {
-            validador.Validar("BCBZXX-3");
-        }
+            string expected = validador.Validar("BBBB001");
+            Assert.AreEqual("321", expected);
 
-        [TestMethod]
-        [ExpectedException(typeof(BusinessException))]
-        public void TestValidarPatenteErrorNumeric2()
-        {
-            validador.Validar("BCBZ09-3");
-        }
-
-        [TestMethod]
-        public void TestValidarPatente1()
-        {
-            string result = validador.Validar("AA8159-5");
-            string expected = "AA8159" + Format.SEPARADOR_DV + "5";
-            Assert.AreEqual(expected, result);
-        }
-
-        [TestMethod]
-        public void TestValidarPatente2()
-        {
-            string result = validador.Validar("AA1111-2");
-            string expected = "AA1111" + Format.SEPARADOR_DV + "2";
-            Assert.AreEqual(expected, result);
-        }
-
-        [TestMethod]
-        public void TestValidarPatente3()
-        {
-            string result = validador.Validar("BBBB10-8");
-            string expected = "BBBB10" + Format.SEPARADOR_DV + "8";
-            Assert.AreEqual(expected, result);
-        }
-
-        [TestMethod]
-        public void TestValidarPatente4()
-        {
-            string result = validador.Validar("BCBC10-9");
-            string expected = "BCBC10" + Format.SEPARADOR_DV + "9";
-            Assert.AreEqual(expected, result);
-        }
-
-        [TestMethod]
-        public void TestValidarPatente5()
-        {
-            string result = validador.Validar("BCBP10-6");
-            string expected = "BCBP10" + Format.SEPARADOR_DV + "6";
-            Assert.AreEqual(expected, result);
-        }
-
-        [TestMethod]
-        public void TestValidarPatente6()
-        {
-            string result = validador.Validar("BCBR10-9");
-            string expected = "BCBR10" + Format.SEPARADOR_DV + "9";
-            Assert.AreEqual(expected, result);
-        }
-
-        [TestMethod]
-        public void TestValidarPatente7()
-        {
-            string result = validador.Validar("BCBS10-5");
-            string expected = "BCBS10" + Format.SEPARADOR_DV + "5";
-            Assert.AreEqual(expected, result);
-        }
-
-        [TestMethod]
-        public void TestValidarPatente8()
-        {
-            string result = validador.Validar("BCBZ10-3");
-            string expected = "BCBZ10" + Format.SEPARADOR_DV + "3";
-            Assert.AreEqual(expected, result);
+            validadorLongitud.Verify(v => v.Validar(It.IsAny<string>()), Times.Once());
+            validadorAntiguo.Verify(v => v.Validar(It.IsAny<string>()), Times.Never());
+            validadorActual.Verify(v => v.Validar(It.IsAny<string>()), Times.Once());
         }
 
     }

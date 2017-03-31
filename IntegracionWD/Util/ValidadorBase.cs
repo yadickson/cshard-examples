@@ -8,7 +8,7 @@ using IntegracionWD.Constants;
 
 namespace IntegracionWD.Util
 {
-    public class ValidadorBase
+    public abstract class ValidadorBase
     {
         protected void ValidarNulo(string input, string messageError, string codeError)
         {

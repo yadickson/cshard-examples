@@ -8,7 +8,7 @@ using IntegracionWD.Constants;
 
 namespace IntegracionWD.Util
 {
-    public class ValidadorRUT : ValidadorBase
+    public class ValidadorRUT : ValidadorBase, ValidadorInterface<string, string>
     {
         public string Validar(string input)
         {
@@ -21,7 +21,7 @@ namespace IntegracionWD.Util
             string rut = irut.Substring(0, irut.Length - 1);
             string dv = irut.Substring(irut.Length - 1);
 
-            if (!new ValidadorModulo11().Validar(rut, dv))
+            if (!new ValidadorModulo11().Validar(irut))
             {
                 throw new BusinessException("Digito verificador de RUT incorrecto [" + input + "]", Errors.RUT_DV_INCORRECTO);
             }

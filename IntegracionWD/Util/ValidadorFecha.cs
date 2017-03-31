@@ -9,7 +9,7 @@ using IntegracionWD.Constants;
 
 namespace IntegracionWD.Util
 {
-    public class ValidadorFecha
+    public class ValidadorFecha : ValidadorInterface<bool, string>
     {
         public bool Validar(string input)
         {

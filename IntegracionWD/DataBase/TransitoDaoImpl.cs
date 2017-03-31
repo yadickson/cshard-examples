@@ -40,8 +40,8 @@ namespace IntegracionWD.DataBase
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@FechaDesde", SqlDbType.VarChar).Value = data.FechaDesde;
                 cmd.Parameters.Add("@FechaHasta", SqlDbType.VarChar).Value = data.FechaHasta;
-                cmd.Parameters.Add("@Identificador", SqlDbType.VarChar).Value = data.Identificador;
-                cmd.Parameters.Add("@Tipo", SqlDbType.VarChar).Value = data.Tipo;
+                cmd.Parameters.Add("@Identificador", SqlDbType.VarChar).Value = data.TipoIdentificador.Identificador;
+                cmd.Parameters.Add("@Tipo", SqlDbType.VarChar).Value = data.TipoIdentificador.Tipo;
 
                 AgregarParametrosSalida(cmd);
 
@@ -54,8 +54,9 @@ namespace IntegracionWD.DataBase
                     consulta.Fecha = reader.GetString(0);
                     consulta.Sentido = reader.GetString(1);
                     consulta.PuntoDeControl = reader.GetString(2);
-                    consulta.Tipo = reader.GetString(3);
-                    consulta.Identificador = reader.GetString(4);
+                    consulta.TipoIdentificador = new DataIdentificador();
+                    consulta.TipoIdentificador.Tipo = reader.GetString(3);
+                    consulta.TipoIdentificador.Identificador = reader.GetString(4);
                     listado.Add(consulta);
                 }
 
@@ -63,8 +64,8 @@ namespace IntegracionWD.DataBase
             }
             catch (System.Exception ex)
             {
-                log.Error("No es posible realizar la consulta de transito [FechaDesde:" + data.FechaDesde + "][FechaHasta:" + data.FechaHasta + "][Tipo:" + data.Tipo + "][Identificador:" + data.Identificador + "]", ex);
-                throw new BusinessException("No es posible realizar la consulta de transito [FechaDesde:" + data.FechaDesde + "][FechaHasta:" + data.FechaHasta + "][Tipo:" + data.Tipo + "][Identificador:" + data.Identificador + "]", Errors.CONSULTA_TRANSITO_DAO, ex);
+                log.Error("No es posible realizar la consulta de transito [FechaDesde:" + data.FechaDesde + "][FechaHasta:" + data.FechaHasta + "][Tipo:" + data.TipoIdentificador.Tipo + "][Identificador:" + data.TipoIdentificador.Identificador + "]", ex);
+                throw new BusinessException("No es posible realizar la consulta de transito [FechaDesde:" + data.FechaDesde + "][FechaHasta:" + data.FechaHasta + "][Tipo:" + data.TipoIdentificador.Tipo + "][Identificador:" + data.TipoIdentificador.Identificador + "]", Errors.CONSULTA_TRANSITO_DAO, ex);
             }
 
             ValidarResultado(Errors.CONSULTA_TRANSITO_DAO);

@@ -50,8 +50,11 @@
     <Compile Include="ValidadorFechaHasta.cs" />
     <Compile Include="ValidadorFechaDesde.cs" />
     <Compile Include="ValidadorFechaExpiracionVehiculo.cs" />
-    <Compile Include="ValidadorTipoIdentificadorInterface.cs" />
-    <Compile Include="ValidadorTipoIdentificadorImpl.cs" />
+    <Compile Include="ValidadorInterface.cs" />
+    <Compile Include="ValidadorPatenteActual.cs" />
+    <Compile Include="ValidadorPatenteAntigua.cs" />
+    <Compile Include="ValidadorPatenteLongitud.cs" />
+    <Compile Include="ValidadorTipoIdentificador.cs" />
     <Compile Include="ValidadorTipo.cs" />
     <Compile Include="ValidadorModelo.cs" />
     <Compile Include="ValidadorMotivoRechazoLicencia.cs" />

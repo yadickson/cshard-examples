@@ -12,32 +12,39 @@ namespace IntegracionWD.Core
 {
     public class ValidadorDataTransitoImpl : ValidadorDataInterface<DataTransito>
     {
+        private ValidadorInterface<string, string> validadorFechaDesde;
+        private ValidadorInterface<string, string> validadorFechaHasta;
+        private ValidadorInterface<DataIdentificador, DataIdentificador> validadorTipoIdentificador;
+
+        public ValidadorDataTransitoImpl(ValidadorInterface<string, string> validadorFechaDesde,
+            ValidadorInterface<string, string> validadorFechaHasta,
+            ValidadorInterface<DataIdentificador, DataIdentificador> validadorTipoIdentificador)
+        {
+            this.validadorFechaDesde = validadorFechaDesde;
+            this.validadorFechaHasta = validadorFechaHasta;
+            this.validadorTipoIdentificador = validadorTipoIdentificador;
+        }
+
         public DataTransito Validar(DataTransito data)
         {
             DataTransito output = new DataTransito();
 
-            output.FechaDesde = new ValidadorFechaDesde().Validar(data.FechaDesde);
-            output.FechaHasta = new ValidadorFechaHasta().Validar(data.FechaHasta);
+            output.FechaDesde = validadorFechaDesde.Validar(data.FechaDesde);
+            output.FechaHasta = validadorFechaHasta.Validar(data.FechaHasta);
 
-            if (output.FechaDesde.CompareTo(output.FechaHasta) <= 0)
+            if (output.FechaDesde.CompareTo(output.FechaHasta) > 0)
             {
-                output.FechaDesde = new ValidadorFechaDesde().Validar(output.FechaDesde);
-                output.FechaHasta = new ValidadorFechaHasta().Validar(output.FechaHasta);
-            }
-            else
-            {
-                throw new BusinessException("Fecha desde mayor a fecha hasta [FechaDesde:" + data.FechaDesde + "][FechaHasta:" + data.FechaHasta + "]", Errors.FECHA_DESDE_MENOR);
+                throw new BusinessException("Fecha desde mayor a fecha hasta [FechaDesde:" + output.FechaDesde + "][FechaHasta:" + output.FechaHasta + "]", Errors.FECHA_DESDE_MENOR);
             }
 
-            if (data.Tipo != null || data.Identificador != null)
+            if (data.TipoIdentificador == null)
             {
-                string otipo;
-                string odata;
+                output.TipoIdentificador = data.TipoIdentificador = new DataIdentificador();
+            }
 
-                new ValidadorTipoIdentificadorImpl().Validar(data.Tipo, data.Identificador, out otipo, out odata);
-
-                output.Tipo = otipo;
-                output.Identificador = odata;
+            if (data.TipoIdentificador.Tipo != null || data.TipoIdentificador.Identificador != null)
+            {
+                output.TipoIdentificador = validadorTipoIdentificador.Validar(data.TipoIdentificador);
             }
 
             return output;

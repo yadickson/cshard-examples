@@ -6,22 +6,25 @@ using System.Threading.Tasks;
 
 namespace IntegracionWD.Util
 {
-    public class ValidadorModulo11
+    public class ValidadorModulo11 : ValidadorInterface<bool, string>
     {
-        public bool Validar(string rut, string dv)
+        public bool Validar(string input)
         {
-            return dv.ToUpper().Equals(GetDigitoVerificador(rut));
+            string data = input.Substring(0, input.Length - 1);
+            string dv = input.Substring(input.Length - 1);
+
+            return dv.ToUpper().Equals(GetDigitoVerificador(data));
         }
 
-        public string GetDigitoVerificador(string rut)
+        public string GetDigitoVerificador(string data)
         {
             int mul = 2;
             int suma = 0;
 
-            int longitud = rut.Length;
+            int longitud = data.Length;
             for (int i = longitud - 1; i >= 0; i--)
             {
-                int dig = Convert.ToInt32(rut.ElementAt(i)) - 48;
+                int dig = Convert.ToInt32(data.ElementAt(i)) - 48;
                 suma += dig * mul;
                 if (mul == 7)
                 {

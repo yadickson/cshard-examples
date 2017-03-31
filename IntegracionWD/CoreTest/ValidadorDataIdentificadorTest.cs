@@ -12,12 +12,12 @@ namespace IntegracionWD.CoreTest
     public class ValidadorDataIdentificadorTest
     {
         private ValidadorDataInterface<DataIdentificador> validador;
-        private Mock<ValidadorTipoIdentificadorInterface> validadorIdentificador;
+        private Mock<ValidadorInterface<DataIdentificador, DataIdentificador>> validadorIdentificador;
 
         [TestInitialize()]
         public void Initialize()
         {
-            validadorIdentificador = new Mock<ValidadorTipoIdentificadorInterface>();
+            validadorIdentificador = new Mock<ValidadorInterface<DataIdentificador, DataIdentificador>>();
             validador = new ValidadorDataIdentificadorImpl(validadorIdentificador.Object);
         }
 
@@ -31,20 +31,14 @@ namespace IntegracionWD.CoreTest
         [ExpectedException(typeof(BusinessException))]
         public void TestValidadorFalla()
         {
-            string otipo;
-            string oiden;
-
-            validadorIdentificador.Setup(v => v.Validar(It.IsAny<string>(), It.IsAny<string>(), out otipo, out oiden)).Throws(new BusinessException("Validador error", "0001"));
+            validadorIdentificador.Setup(v => v.Validar(It.IsAny<DataIdentificador>())).Throws(new BusinessException("Validador error", "0001"));
             validador.Validar(new DataIdentificador());
         }
 
         [TestMethod]
         public void TestValidadorCorrecto()
         {
-            string otipo;
-            string oiden;
-
-            validadorIdentificador.Setup(v => v.Validar(It.IsAny<string>(), It.IsAny<string>(), out otipo, out oiden)).Verifiable();
+            validadorIdentificador.Setup(v => v.Validar(It.IsAny<DataIdentificador>())).Verifiable();
             validador.Validar(new DataIdentificador());
         }
     }

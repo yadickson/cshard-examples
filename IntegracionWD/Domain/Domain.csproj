@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataIdentificador.cs" />
     <Compile Include="DataTransito.cs" />
     <Compile Include="DataVehiculo.cs" />
     <Compile Include="DataPersona.cs" />
@@ -47,6 +46,7 @@
     <Compile Include="RespuestaTransito.cs" />
     <Compile Include="Respuesta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataIdentificador.cs" />
     <Compile Include="Transito.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

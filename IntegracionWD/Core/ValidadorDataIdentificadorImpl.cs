@@ -10,26 +10,16 @@ namespace IntegracionWD.Core
 {
     public class ValidadorDataIdentificadorImpl : ValidadorDataInterface<DataIdentificador>
     {
-        private ValidadorTipoIdentificadorInterface validador;
+        private ValidadorInterface<DataIdentificador, DataIdentificador> validador;
 
-        public ValidadorDataIdentificadorImpl(ValidadorTipoIdentificadorInterface validador)
+        public ValidadorDataIdentificadorImpl(ValidadorInterface<DataIdentificador, DataIdentificador> validador)
         {
             this.validador = validador;
         }
 
         public DataIdentificador Validar(DataIdentificador data)
         {
-            DataIdentificador output = new DataIdentificador();
-
-            string otipo;
-            string odata;
-
-            validador.Validar(data.Tipo, data.Identificador, out otipo, out odata);
-
-            output.Tipo = otipo;
-            output.Identificador = odata;
-
-            return output;
+            return validador.Validar(data);
         }
     }
 }

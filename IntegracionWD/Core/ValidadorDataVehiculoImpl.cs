@@ -10,11 +10,18 @@ namespace IntegracionWD.Core
 {
     public class ValidadorDataVehiculoImpl : ValidadorDataInterface<DataVehiculo>
     {
+        private ValidadorInterface<string, string> validadorPatente;
+
+        public ValidadorDataVehiculoImpl(ValidadorInterface<string, string> validadorPatente)
+        {
+            this.validadorPatente = validadorPatente;
+        }
+
         public DataVehiculo Validar(DataVehiculo data)
         {
             DataVehiculo output = new DataVehiculo();
 
-            output.Patente = new ValidadorPatente().Validar(data.Patente);
+            output.Patente = validadorPatente.Validar(data.Patente);
             output.Marca = new ValidadorMarca().Validar(data.Marca);
             output.Modelo = new ValidadorModelo().Validar(data.Modelo);
             output.Anio = new ValidadorAnioVehiculo().Validar(data.Anio);
