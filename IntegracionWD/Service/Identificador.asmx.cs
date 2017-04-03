@@ -14,7 +14,7 @@ namespace IntegracionWD.Service
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Identificador));
 
-        private IdentificadorInterface identificadorUnico;
+        private IdentificadorInterface identificadorUnico = CoreFactory.createIdentificador();
 
         [WebMethod(Description = "Metodo para obtener identificador unico")]
         public RespuestaIdentificador ObtenerIdentificadorUnico(DataIdentificador data)

@@ -14,7 +14,7 @@ namespace IntegracionWD.Service
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Vehiculos));
 
-        private VehiculoInterface vehiculo;
+        private VehiculoInterface vehiculo = CoreFactory.createVehiculo();
 
         [WebMethod(Description = "Metodo para agregar vehiculo")]
         public Respuesta AgregarVehiculo(DataVehiculo data)

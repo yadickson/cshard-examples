@@ -14,7 +14,7 @@ namespace IntegracionWD.Service
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Personas));
 
-        private PersonaInterface persona;
+        private PersonaInterface persona = CoreFactory.createPersona();
 
         [WebMethod(Description = "Metodo para agregar personas")]
         public Respuesta AgregarPersona(DataPersona data)

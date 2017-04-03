@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoreFactory.cs" />
     <Compile Include="IdentificadorImpl.cs" />
     <Compile Include="IdentificadorInterface.cs" />
     <Compile Include="PersonaImpl.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="ValidadorDataVehiculoImpl.cs" />
     <Compile Include="ValidadorDataInterface.cs" />
     <Compile Include="ValidadorDataPersonaImpl.cs" />
+    <Compile Include="ValidadorFactory.cs" />
     <Compile Include="VehiculoImpl.cs" />
     <Compile Include="VehiculoInterface.cs" />
   </ItemGroup>

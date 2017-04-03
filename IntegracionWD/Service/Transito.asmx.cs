@@ -14,7 +14,7 @@ namespace IntegracionWD.Service
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Transito));
 
-        private TransitoInterface transito;
+        private TransitoInterface transito = CoreFactory.createTransito();
 
         [WebMethod(Description = "Metodo para obtener listado de transito")]
         public RespuestaTransito ObtenerListadoTransito(DataTransito data)
