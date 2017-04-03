@@ -28,8 +28,6 @@ namespace IntegracionWD.Service
         [WebMethod(Description = "Metodo para agregar personas")]
         public Respuesta AgregarPersona(DataPersona data)
         {
-            string userName = System.Threading.Thread.CurrentPrincipal.Identity.Name;
-            log.Info("User name: " + userName);
             log.Info("Agregar persona : " + data);
             return persona.AgregarPersona(data);
         }

@@ -39,11 +39,11 @@ namespace IntegracionWD.DataBase
                 cmd.Parameters.Add("@Marca", SqlDbType.NVarChar).Value = data.Marca;
                 cmd.Parameters.Add("@Modelo", SqlDbType.NVarChar).Value = data.Modelo;
                 cmd.Parameters.Add("@Anio", SqlDbType.VarChar).Value = data.Anio;
-                cmd.Parameters.Add("@TipoVehiculo", SqlDbType.NVarChar).Value = data.TipoVehiculo;
+                cmd.Parameters.Add("@TipoVehiculo", SqlDbType.NVarChar).Value = data.Tipo_Vehiculo;
                 cmd.Parameters.Add("@Contrato", SqlDbType.NVarChar).Value = data.Contrato;
-                cmd.Parameters.Add("@RazonSocial", SqlDbType.NVarChar).Value = data.RazonSocial;
-                cmd.Parameters.Add("@FechaExpiracion", SqlDbType.VarChar).Value = data.FechaExpiracion;
-                cmd.Parameters.Add("@MotivoRechazo", SqlDbType.NVarChar).Value = data.MotivoRechazo;
+                cmd.Parameters.Add("@RazonSocial", SqlDbType.NVarChar).Value = data.Razon_Social;
+                cmd.Parameters.Add("@FechaExpiracion", SqlDbType.VarChar).Value = data.Fecha_Expiracion;
+                cmd.Parameters.Add("@MotivoRechazo", SqlDbType.NVarChar).Value = data.Motivo_Rechazo;
 
                 AgregarParametrosSalida(cmd);
 

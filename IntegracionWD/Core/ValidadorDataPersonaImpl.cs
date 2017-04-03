@@ -18,13 +18,13 @@ namespace IntegracionWD.Core
             output.Apellido = new ValidadorApellido().Validar(data.Apellido);
             output.RUT = new ValidadorRUT().Validar(data.RUT);
             output.Tarjeta = new ValidadorTarjeta().Validar(data.Tarjeta);
-            output.TipoPase = new ValidadorTipoPase().Validar(data.TipoPase);
+            output.Tipo_Pase = new ValidadorTipoPase().Validar(data.Tipo_Pase);
             output.Contrato = new ValidadorContrato().Validar(data.Contrato);
-            output.RazonSocial = new ValidadorRazonSocial().Validar(data.RazonSocial);
-            output.FechaExpiracionTrabajador = new ValidadorFechaExpiracionTrabajador().Validar(data.FechaExpiracionTrabajador);
-            output.MotivoRechazoTrabajor = new ValidadorMotivoRechazoTrabajor().Validar(data.MotivoRechazoTrabajor);
-            output.FechaExpiracionLicencia = new ValidadorFechaExpiracionLicencia().Validar(data.FechaExpiracionLicencia);
-            output.MotivoRechazoLicencia = new ValidadorMotivoRechazoLicencia().Validar(data.MotivoRechazoLicencia);
+            output.Razon_Social = new ValidadorRazonSocial().Validar(data.Razon_Social);
+            output.Fecha_Expiracion_Trabajador = new ValidadorFechaExpiracionTrabajador().Validar(data.Fecha_Expiracion_Trabajador);
+            output.Motivo_Rechazo_Trabajor = new ValidadorMotivoRechazoTrabajor().Validar(data.Motivo_Rechazo_Trabajor);
+            output.Fecha_Expiracion_Licencia = new ValidadorFechaExpiracionLicencia().Validar(data.Fecha_Expiracion_Licencia);
+            output.Motivo_Rechazo_Licencia = new ValidadorMotivoRechazoLicencia().Validar(data.Motivo_Rechazo_Licencia);
 
             return output;
         }

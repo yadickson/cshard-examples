@@ -14,13 +14,13 @@ namespace IntegracionWD.Domain
         private string tipo; // persona(P)/vehiculo(V)
         private string identificador; // RUT/Patente
 
-        public string FechaDesde
+        public string Fecha_Desde
         {
             get { return fechaDesde; }
             set { fechaDesde = value; }
         }
 
-        public string FechaHasta
+        public string Fecha_Hasta
         {
             get { return fechaHasta; }
             set { fechaHasta = value; }

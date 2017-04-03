@@ -16,17 +16,17 @@ namespace IntegracionWD.Core
         {
             DataTransito output = new DataTransito();
 
-            output.FechaDesde = new ValidadorFechaDesde().Validar(data.FechaDesde);
-            output.FechaHasta = new ValidadorFechaHasta().Validar(data.FechaHasta);
+            output.Fecha_Desde = new ValidadorFechaDesde().Validar(data.Fecha_Desde);
+            output.Fecha_Hasta = new ValidadorFechaHasta().Validar(data.Fecha_Hasta);
 
-            if (output.FechaDesde.CompareTo(output.FechaHasta) <= 0)
+            if (output.Fecha_Desde.CompareTo(output.Fecha_Hasta) <= 0)
             {
-                output.FechaDesde = new ValidadorFechaDesde().Validar(output.FechaDesde);
-                output.FechaHasta = new ValidadorFechaHasta().Validar(output.FechaHasta);
+                output.Fecha_Desde = new ValidadorFechaDesde().Validar(output.Fecha_Desde);
+                output.Fecha_Hasta = new ValidadorFechaHasta().Validar(output.Fecha_Hasta);
             }
             else
             {
-                throw new BusinessException("Fecha desde mayor a fecha hasta [FechaDesde:" + data.FechaDesde + "][FechaHasta:" + data.FechaHasta + "]", Errors.FECHA_DESDE_MENOR);
+                throw new BusinessException("Fecha desde mayor a fecha hasta [FechaDesde:" + data.Fecha_Desde + "][FechaHasta:" + data.Fecha_Hasta + "]", Errors.FECHA_DESDE_MENOR);
             }
 
             if (data.Tipo != null || data.Identificador != null)
