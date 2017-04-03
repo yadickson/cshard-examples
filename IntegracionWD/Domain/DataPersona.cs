@@ -45,7 +45,7 @@ namespace IntegracionWD.Domain
             set { tarjeta = value; }
         }
 
-        public string TipoPase
+        public string Tipo_Pase
         {
             get { return tipoPase; }
             set { tipoPase = value; }
@@ -57,31 +57,31 @@ namespace IntegracionWD.Domain
             set { contrato = value; }
         }
 
-        public string RazonSocial
+        public string Razon_Social
         {
             get { return razonSocial; }
             set { razonSocial = value; }
         }
 
-        public string FechaExpiracionTrabajador
+        public string Fecha_Expiracion_Trabajador
         {
             get { return fechaExpiracionTrabajador; }
             set { fechaExpiracionTrabajador = value; }
         }
 
-        public string MotivoRechazoTrabajor
+        public string Motivo_Rechazo_Trabajor
         {
             get { return motivoRechazoTrabajor; }
             set { motivoRechazoTrabajor = value; }
         }
 
-        public string FechaExpiracionLicencia
+        public string Fecha_Expiracion_Licencia
         {
             get { return fechaExpiracionLicencia; }
             set { fechaExpiracionLicencia = value; }
         }
 
-        public string MotivoRechazoLicencia
+        public string Motivo_Rechazo_Licencia
         {
             get { return motivoRechazoLicencia; }
             set { motivoRechazoLicencia = value; }

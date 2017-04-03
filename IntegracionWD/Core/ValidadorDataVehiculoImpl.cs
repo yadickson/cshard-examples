@@ -18,11 +18,11 @@ namespace IntegracionWD.Core
             output.Marca = new ValidadorMarca().Validar(data.Marca);
             output.Modelo = new ValidadorModelo().Validar(data.Modelo);
             output.Anio = new ValidadorAnioVehiculo().Validar(data.Anio);
-            output.TipoVehiculo = new ValidadorTipoVehiculo().Validar(data.TipoVehiculo);
+            output.Tipo_Vehiculo = new ValidadorTipoVehiculo().Validar(data.Tipo_Vehiculo);
             output.Contrato = new ValidadorContrato().Validar(data.Contrato);
-            output.RazonSocial = new ValidadorRazonSocial().Validar(data.RazonSocial);
-            output.FechaExpiracion = new ValidadorFechaExpiracionVehiculo().Validar(data.FechaExpiracion);
-            output.MotivoRechazo = new ValidadorMotivoRechazoVehiculo().Validar(data.MotivoRechazo);
+            output.Razon_Social = new ValidadorRazonSocial().Validar(data.Razon_Social);
+            output.Fecha_Expiracion = new ValidadorFechaExpiracionVehiculo().Validar(data.Fecha_Expiracion);
+            output.Motivo_Rechazo = new ValidadorMotivoRechazoVehiculo().Validar(data.Motivo_Rechazo);
 
             return output;
         }

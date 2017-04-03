@@ -43,7 +43,7 @@ namespace IntegracionWD.Domain
             set { anio = value; }
         }
 
-        public string TipoVehiculo
+        public string Tipo_Vehiculo
         {
             get { return tipoVehiculo; }
             set { tipoVehiculo = value; }
@@ -55,19 +55,19 @@ namespace IntegracionWD.Domain
             set { contrato = value; }
         }
 
-        public string RazonSocial
+        public string Razon_Social
         {
             get { return razonSocial; }
             set { razonSocial = value; }
         }
 
-        public string FechaExpiracion
+        public string Fecha_Expiracion
         {
             get { return fechaExpiracion; }
             set { fechaExpiracion = value; }
         }
 
-        public string MotivoRechazo
+        public string Motivo_Rechazo
         {
             get { return motivoRechazo; }
             set { motivoRechazo = value; }
