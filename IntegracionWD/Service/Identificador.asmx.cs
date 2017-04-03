@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Services;
 using IntegracionWD.Domain;
 using IntegracionWD.Core;
-using Spring.Context;
-using Spring.Context.Support;
 
 namespace IntegracionWD.Service
 {
@@ -18,12 +15,6 @@ namespace IntegracionWD.Service
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Identificador));
 
         private IdentificadorInterface identificadorUnico;
-
-        public Identificador()
-        {
-            IApplicationContext applicationContext = ContextRegistry.GetContext();
-            this.identificadorUnico = (IdentificadorInterface)applicationContext["identificador"];
-        }
 
         [WebMethod(Description = "Metodo para obtener identificador unico")]
         public RespuestaIdentificador ObtenerIdentificadorUnico(DataIdentificador data)

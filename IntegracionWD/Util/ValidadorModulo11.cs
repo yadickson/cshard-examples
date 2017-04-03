@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace IntegracionWD.Util
 {
@@ -21,7 +19,7 @@ namespace IntegracionWD.Util
             int longitud = rut.Length;
             for (int i = longitud - 1; i >= 0; i--)
             {
-                int dig = Convert.ToInt32(rut.ElementAt(i)) - 48;
+                int dig = Convert.ToInt32(rut[i]) - 48;
                 suma += dig * mul;
                 if (mul == 7)
                 {
