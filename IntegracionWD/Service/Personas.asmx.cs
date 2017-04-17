@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using System.Web.Services.Protocols;
 using IntegracionWD.Domain;
 using IntegracionWD.Core;
 using Spring.Context;
@@ -18,7 +19,7 @@ namespace IntegracionWD.Service
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(Personas));
 
         private PersonaInterface persona;
-        
+
         public Personas()
         {
             IApplicationContext applicationContext = ContextRegistry.GetContext();
@@ -28,6 +29,7 @@ namespace IntegracionWD.Service
         [WebMethod(Description = "Metodo para agregar personas")]
         public Respuesta AgregarPersona(DataPersona data)
         {
+            new Security(this);
             log.Info("Agregar persona : " + data);
             return persona.AgregarPersona(data);
         }

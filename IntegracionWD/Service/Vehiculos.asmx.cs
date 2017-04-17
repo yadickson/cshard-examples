@@ -28,6 +28,7 @@ namespace IntegracionWD.Service
         [WebMethod(Description = "Metodo para agregar vehiculo")]
         public Respuesta AgregarVehiculo(DataVehiculo data)
         {
+            new Security(this);
             log.Info("Agregar vehiculo : " + data);
             return vehiculo.AgregarVehiculo(data);
         }

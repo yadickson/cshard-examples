@@ -28,6 +28,7 @@ namespace IntegracionWD.Service
         [WebMethod(Description = "Metodo para obtener listado de transito")]
         public RespuestaTransito ObtenerListadoTransito(DataTransito data)
         {
+            new Security(this);
             log.Info("Obtener listado transito : " + data);
             return transito.ObtenerListadoTransito(data);
         }
