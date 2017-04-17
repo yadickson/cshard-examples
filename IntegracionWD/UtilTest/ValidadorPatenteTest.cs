@@ -56,7 +56,7 @@ namespace IntegracionWD.UtilTest
         [TestMethod]
         public void TestValidarPatentModerna()
         {
-            validador.Validar("AABB59");
+            validador.Validar("BBBB59");
         }
 
         [TestMethod]

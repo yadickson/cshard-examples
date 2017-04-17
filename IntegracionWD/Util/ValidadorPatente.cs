@@ -26,15 +26,17 @@ namespace IntegracionWD.Util
             Regex rxAntigua = new Regex("^([A-Za-z]{2}[0-9]{4})$");
             Regex rxModerna = new Regex("^([A-Za-z]{4}[0-9]{2})$");
 
-            Match m = rx.Match(ipatente);
-
             if (rxAntigua.Match(ipatente).Success)
             {
-                ValidarPatenteAntigua(input, patente);
+                ValidarPatenteAntigua(input, ipatente);
             }
             else if (rxModerna.Match(ipatente).Success)
             {
-                ValidarPatenteActual(input, patente);
+                ValidarPatenteActual(input, ipatente, 4);
+            }
+            else
+            {
+                ValidarPatenteActual(input, ipatente, 3);
             }
 
             return ipatente;
@@ -70,28 +72,11 @@ namespace IntegracionWD.Util
             {
                 throw new BusinessException("Patente antigua no valida [" + pInput + "]", Errors.PATENTE_INCORRECTA);
             }
-
-            string numeroCentral = input.Substring(2, 2);
-
-            int nCentral = int.Parse(numeroCentral);
-
-            if (nCentral < 10)
-            {
-                throw new BusinessException("Patente no valida [" + pInput + "]", Errors.PATENTE_INCORRECTA);
-            }
         }
 
-        protected void ValidarPatenteActual(string pInput, string input)
+        protected void ValidarPatenteActual(string pInput, string input, int size)
         {
-            char[] letras = input.Substring(0, 4).ToCharArray();
-            string numeroFinal = input.Substring(4, 2);
-
-            int nFinal = int.Parse(numeroFinal);
-
-            if (nFinal < 10)
-            {
-                throw new BusinessException("Patente no valida [" + pInput + "]", Errors.PATENTE_INCORRECTA);
-            }
+            char[] letras = input.Substring(0, size).ToCharArray();
 
             foreach (char c in letras)
             {
