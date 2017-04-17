@@ -23,6 +23,20 @@ namespace IntegracionWD.Util
             ValidarLongitud(input, ipatente, out ipatente);
             ValidadorEstructura(input, ipatente);
 
+            Regex rxAntigua = new Regex("^([A-Za-z]{2}[0-9]{4})$");
+            Regex rxModerna = new Regex("^([A-Za-z]{4}[0-9]{2})$");
+
+            Match m = rx.Match(ipatente);
+
+            if (rxAntigua.Match(ipatente).Success)
+            {
+                ValidarPatenteAntigua(input, patente);
+            }
+            else if (rxModerna.Match(ipatente).Success)
+            {
+                ValidarPatenteActual(input, patente);
+            }
+
             return ipatente;
         }
 
@@ -45,6 +59,49 @@ namespace IntegracionWD.Util
             if (!m.Success)
             {
                 throw new BusinessException("Patente no valida [" + pInput + "], se espera XX9999, XXXX99 o XXX999", Errors.PATENTE_INCORRECTA);
+            }
+        }
+
+        protected void ValidarPatenteAntigua(string pInput, string input)
+        {
+            int pos = listAntigua.IndexOf(input.Substring(0, 2).ToUpper());
+
+            if (pos == -1)
+            {
+                throw new BusinessException("Patente antigua no valida [" + pInput + "]", Errors.PATENTE_INCORRECTA);
+            }
+
+            string numeroCentral = input.Substring(2, 2);
+
+            int nCentral = int.Parse(numeroCentral);
+
+            if (nCentral < 10)
+            {
+                throw new BusinessException("Patente no valida [" + pInput + "]", Errors.PATENTE_INCORRECTA);
+            }
+        }
+
+        protected void ValidarPatenteActual(string pInput, string input)
+        {
+            char[] letras = input.Substring(0, 4).ToCharArray();
+            string numeroFinal = input.Substring(4, 2);
+
+            int nFinal = int.Parse(numeroFinal);
+
+            if (nFinal < 10)
+            {
+                throw new BusinessException("Patente no valida [" + pInput + "]", Errors.PATENTE_INCORRECTA);
+            }
+
+            foreach (char c in letras)
+            {
+                string caracter = c.ToString().ToUpper();
+                int pos = listActual.IndexOf(caracter);
+
+                if (pos == -1)
+                {
+                    throw new BusinessException("Patente no valida [" + pInput + "]", Errors.PATENTE_INCORRECTA);
+                }
             }
         }
     }
